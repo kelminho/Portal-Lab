@@ -1,0 +1,81 @@
+@model ProfilePageViewModel
+@{
+    ViewData["Title"] = "Meu perfil";
+}
+<div class="page-header">
+    <div>
+        <h1>Meu perfil</h1>
+        <p class="muted">Atualize seus dados pessoais e sua senha.</p>
+    </div>
+</div>
+
+<div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+<div class="grid-3">
+    <section class="card">
+        <h2>Conta</h2>
+        <dl class="details">
+            <dt>Usuário</dt>
+            <dd>@Model.User.UserName</dd>
+            <dt>Papel</dt>
+            <dd><span class="@DisplayHelpers.RoleCss(Model.User.Role)">@Model.User.Role</span></dd>
+            <dt>Permissões</dt>
+            <dd class="small">@AppRoles.Describe(Model.User.Role)</dd>
+            <dt>Status</dt>
+            <dd>@(Model.User.IsActive ? "Ativa" : "Inativa")</dd>
+            <dt>Criada em</dt>
+            <dd>@DisplayHelpers.FormatDate(Model.User.CreatedAt)</dd>
+            <dt>Último login</dt>
+            <dd>@DisplayHelpers.FormatDate(Model.User.LastLoginAt)</dd>
+        </dl>
+    </section>
+
+    <section class="card">
+        <h2>Dados pessoais</h2>
+        <form asp-controller="Profile" asp-action="Update" method="post" novalidate>
+            <div class="field">
+                <label asp-for="Profile.FullName"></label>
+                <input asp-for="Profile.FullName" />
+                <span asp-validation-for="Profile.FullName" class="field-error"></span>
+            </div>
+            <div class="field">
+                <label asp-for="Profile.Email"></label>
+                <input asp-for="Profile.Email" />
+                <span asp-validation-for="Profile.Email" class="field-error"></span>
+            </div>
+            <div class="field">
+                <label asp-for="Profile.Department"></label>
+                <input asp-for="Profile.Department" />
+                <span asp-validation-for="Profile.Department" class="field-error"></span>
+            </div>
+            <div class="field">
+                <label asp-for="Profile.JobTitle"></label>
+                <input asp-for="Profile.JobTitle" />
+                <span asp-validation-for="Profile.JobTitle" class="field-error"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Alterar senha</h2>
+        <form asp-controller="Profile" asp-action="ChangePassword" method="post" novalidate>
+            <div class="field">
+                <label asp-for="Password.CurrentPassword"></label>
+                <input asp-for="Password.CurrentPassword" autocomplete="current-password" />
+                <span asp-validation-for="Password.CurrentPassword" class="field-error"></span>
+            </div>
+            <div class="field">
+                <label asp-for="Password.NewPassword"></label>
+                <input asp-for="Password.NewPassword" autocomplete="new-password" />
+                <span asp-validation-for="Password.NewPassword" class="field-error"></span>
+            </div>
+            <div class="field">
+                <label asp-for="Password.ConfirmNewPassword"></label>
+                <input asp-for="Password.ConfirmNewPassword" autocomplete="new-password" />
+                <span asp-validation-for="Password.ConfirmNewPassword" class="field-error"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Alterar senha</button>
+        </form>
+    </section>
+</div>

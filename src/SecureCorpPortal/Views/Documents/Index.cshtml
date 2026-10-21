@@ -1,0 +1,24 @@
+@model DocumentListViewModel
+@{
+    ViewData["Title"] = "Documentos";
+}
+<div class="page-header">
+    <div>
+        <h1>Documentos</h1>
+        <p class="muted">Somente documentos permitidos para o seu papel (ou publicados por você) são exibidos.</p>
+    </div>
+    <div class="actions">
+        <form asp-controller="Documents" asp-action="Index" method="get" class="search-inline" role="search">
+            <input type="search" name="q" value="@Model.Query" maxlength="100" placeholder="Filtrar por título ou descrição" aria-label="Filtrar documentos" />
+            <button type="submit" class="btn btn-secondary">Filtrar</button>
+        </form>
+        @if (Model.CanCreate)
+        {
+            <a class="btn btn-primary" asp-controller="Documents" asp-action="Upload">Novo documento</a>
+        }
+    </div>
+</div>
+
+<section class="card">
+    <partial name="_DocumentTable" model="Model.Documents" />
+</section>

@@ -1,0 +1,54 @@
+@model SecurityAnalyticsDto
+<section class="card">
+    <h2>Indicadores de segurança <span class="muted small">(últimas 24h)</span></h2>
+    <div class="stats">
+        <div class="stat">
+            <span class="stat-value">@Model.SuccessfulLogins24h</span>
+            <span class="stat-label">Logins bem-sucedidos</span>
+        </div>
+        <div class="stat @(Model.FailedLogins24h > 0 ? "stat-warn" : null)">
+            <span class="stat-value">@Model.FailedLogins24h</span>
+            <span class="stat-label">Logins com falha</span>
+        </div>
+        <div class="stat @(Model.Lockouts24h > 0 ? "stat-alert" : null)">
+            <span class="stat-value">@Model.Lockouts24h</span>
+            <span class="stat-label">Contas bloqueadas</span>
+        </div>
+        <div class="stat @(Model.AccessDenied24h > 0 ? "stat-warn" : null)">
+            <span class="stat-value">@Model.AccessDenied24h</span>
+            <span class="stat-label">Acessos negados</span>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div>
+            <h3>Usuários por papel <span class="muted small">(@Model.ActiveUsers ativos de @Model.TotalUsers)</span></h3>
+            <ul class="bars">
+                @foreach (var (role, count) in Model.UsersByRole)
+                {
+                    <li>
+                        <span class="bar-label">@role</span>
+                        <meter min="0" max="@Math.Max(Model.TotalUsers, 1)" value="@count"></meter>
+                        <span class="bar-value">@count</span>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div>
+            <h3>Documentos por classificação</h3>
+            @{
+                var totalDocuments = Math.Max(Model.DocumentsByClassification.Values.Sum(), 1);
+            }
+            <ul class="bars">
+                @foreach (var (classification, count) in Model.DocumentsByClassification)
+                {
+                    <li>
+                        <span class="bar-label">@DisplayHelpers.ClassificationLabel(classification)</span>
+                        <meter min="0" max="@totalDocuments" value="@count"></meter>
+                        <span class="bar-value">@count</span>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</section>

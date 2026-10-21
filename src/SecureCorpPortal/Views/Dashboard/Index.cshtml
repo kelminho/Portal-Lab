@@ -1,0 +1,79 @@
+@model DashboardDto
+@{
+    ViewData["Title"] = "Dashboard";
+}
+<div class="page-header">
+    <div>
+        <h1>Olá, @Model.User.FullName</h1>
+        <p class="muted">
+            @(Model.User.JobTitle ?? "Colaborador") · @(Model.User.Department ?? "Sem departamento") ·
+            <span class="@DisplayHelpers.RoleCss(Model.User.Role)">@Model.User.Role</span>
+        </p>
+    </div>
+    <form asp-controller="Search" asp-action="Index" method="get" class="search-inline" role="search">
+        <input type="search" name="q" maxlength="100" placeholder="Buscar documentos…" aria-label="Buscar" />
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+</div>
+
+<div class="stats">
+    <div class="stat">
+        <span class="stat-value">@Model.VisibleDocuments</span>
+        <span class="stat-label">Documentos acessíveis</span>
+    </div>
+    <div class="stat">
+        <span class="stat-value">@Model.MyDocuments</span>
+        <span class="stat-label">Documentos publicados por você</span>
+    </div>
+    <div class="stat">
+        <span class="stat-value small-value">@DisplayHelpers.FormatDate(Model.User.LastLoginAt)</span>
+        <span class="stat-label">Último login</span>
+    </div>
+</div>
+
+@if (Model.Analytics is not null)
+{
+    <partial name="_SecurityAnalytics" model="Model.Analytics" />
+}
+
+<div class="grid-2">
+    <section class="card">
+        <div class="card-header">
+            <h2>Documentos recentes</h2>
+            <a asp-controller="Documents" asp-action="Index">Ver todos</a>
+        </div>
+        <partial name="_DocumentTable" model="Model.RecentDocuments" />
+    </section>
+
+    <section class="card">
+        <h2>Minha atividade recente</h2>
+        @if (Model.MyRecentActivity.Count == 0)
+        {
+            <p class="muted">Nenhuma atividade registrada.</p>
+        }
+        else
+        {
+            <ul class="activity">
+                @foreach (var e in Model.MyRecentActivity)
+                {
+                    <li>
+                        <span class="@DisplayHelpers.SeverityCss(e.Severity)">@e.EventType</span>
+                        <span class="mono small">@e.Action</span>
+                        <span class="muted small">@DisplayHelpers.FormatDate(e.Timestamp) · IP @(e.SourceIp ?? "—")</span>
+                    </li>
+                }
+            </ul>
+        }
+    </section>
+</div>
+
+@if (Model.RecentAuditEvents is not null)
+{
+    <section class="card">
+        <div class="card-header">
+            <h2>Últimos eventos de auditoria</h2>
+            <a asp-controller="Admin" asp-action="Logs">Abrir auditoria</a>
+        </div>
+        <partial name="_AuditTable" model="Model.RecentAuditEvents" />
+    </section>
+}

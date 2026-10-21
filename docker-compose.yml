@@ -1,0 +1,88 @@
+# ---------------------------------------------------------------------------
+# SecureCorp Portal — ambiente LOCAL de laboratório.
+#
+#   docker compose up -d --build          inicia aplicação + PostgreSQL
+#   docker compose down                   para (mantém dados)
+#   docker compose down -v                para e APAGA banco/uploads
+#   docker compose --profile test run --rm tests   executa os testes
+#
+# A aplicação só é publicada em 127.0.0.1 (não fica acessível pela rede).
+# O PostgreSQL não publica porta alguma: só é alcançável pela rede interna.
+# ---------------------------------------------------------------------------
+name: securecorp-portal
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: securecorp-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-securecorp}
+      POSTGRES_USER: ${POSTGRES_USER:-securecorp}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-securecorp_lab_only}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    networks:
+      - backend
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: securecorp-portal:local
+    container_name: securecorp-web
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Production}
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=${POSTGRES_DB:-securecorp};Username=${POSTGRES_USER:-securecorp};Password=${POSTGRES_PASSWORD:-securecorp_lab_only}"
+      Seed__Enabled: ${SEED_DEMO_DATA:-true}
+      AppLogging__Directory: /app/logs
+      AppLogging__ConsoleFormat: json
+      Storage__UploadDirectory: /app/data/uploads
+      DataProtection__KeysDirectory: /app/data/keys
+    ports:
+      - "127.0.0.1:${WEB_PORT:-8080}:8080"
+    volumes:
+      - ./logs:/app/logs
+      - appdata:/app/data
+    networks:
+      - backend
+      - frontend
+
+  # Executa a suíte de testes em um container com o SDK do .NET 8
+  # (não precisa ter o .NET instalado na máquina).
+  tests:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    profiles: ["test"]
+    working_dir: /work
+    volumes:
+      - .:/src:ro
+      - nuget:/root/.nuget/packages
+    command:
+      - bash
+      - -c
+      - >
+        mkdir -p /work &&
+        cp -r /src/src /src/tests /src/SecureCorpPortal.sln /work/ &&
+        find /work -type d \( -name bin -o -name obj \) -prune -exec rm -rf {} + &&
+        dotnet test SecureCorpPortal.sln --configuration Release --logger "console;verbosity=normal"
+
+networks:
+  # Rede interna: banco + aplicação. "internal: true" impede acesso externo.
+  backend:
+    internal: true
+  # Rede usada apenas para publicar a porta da aplicação em 127.0.0.1.
+  frontend: {}
+
+volumes:
+  pgdata:
+  appdata:
+  nuget:

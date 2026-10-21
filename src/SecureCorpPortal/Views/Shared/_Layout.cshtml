@@ -1,0 +1,70 @@
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@{
+    var isAuthenticated = User.Identity?.IsAuthenticated == true;
+    var canViewUsers = isAuthenticated && (await AuthorizationService.AuthorizeAsync(User, Policies.CanViewUserDirectory)).Succeeded;
+    var isAdmin = isAuthenticated && User.IsInRole(AppRoles.Admin);
+    var role = isAuthenticated ? User.GetRole() : null;
+    var path = Context.Request.Path.Value ?? "/";
+
+    string? Active(string prefix) => path.StartsWith(prefix, StringComparison.OrdinalIgnoreCase) ? "active" : null;
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] · SecureCorp Portal</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a class="brand" href="/">
+                <span class="brand-mark" aria-hidden="true">SC</span>
+                <span>SecureCorp <strong>Portal</strong></span>
+            </a>
+
+            @if (isAuthenticated)
+            {
+                <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-nav-toggle>☰</button>
+                <nav class="nav" data-nav>
+                    <a asp-controller="Dashboard" asp-action="Index" class="@Active("/dashboard")">Dashboard</a>
+                    <a asp-controller="Documents" asp-action="Index" class="@Active("/documents")">Documentos</a>
+                    <a asp-controller="Search" asp-action="Index" class="@Active("/search")">Busca</a>
+                    @if (canViewUsers)
+                    {
+                        <a asp-controller="Users" asp-action="Index" class="@Active("/users")">Usuários</a>
+                    }
+                    @if (isAdmin)
+                    {
+                        <a asp-controller="Admin" asp-action="Index" class="@Active("/admin")">Administração</a>
+                    }
+                    <a asp-controller="Profile" asp-action="Index" class="@Active("/profile")">Meu perfil</a>
+                </nav>
+                <div class="user-menu">
+                    <span class="user-name">@User.Identity!.Name</span>
+                    <span class="@DisplayHelpers.RoleCss(role!)">@role</span>
+                    <form asp-controller="Account" asp-action="Logout" method="post" class="inline-form">
+                        <button type="submit" class="btn btn-ghost btn-sm">Sair</button>
+                    </form>
+                </div>
+            }
+        </div>
+    </header>
+
+    <main class="container main">
+        <partial name="_StatusMessages" />
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            SecureCorp Portal · empresa fictícia · ambiente exclusivo de laboratório
+        </div>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

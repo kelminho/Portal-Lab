@@ -1,0 +1,133 @@
+@model AuditLogViewModel
+@{
+    ViewData["Title"] = "Eventos de auditoria";
+    var q = Model.Query;
+    var r = Model.Result;
+
+    var eventTypeOptions = Enum.GetValues<AuditEventType>()
+        .Select(t => new SelectListItem(t.ToString(), t.ToString(), q.EventType == t));
+    var severityOptions = Enum.GetValues<AuditSeverity>()
+        .Select(s => new SelectListItem(s.ToString(), s.ToString(), q.Severity == s));
+    var successOptions = new[]
+    {
+        new SelectListItem("Sucesso", "true", q.Success == true),
+        new SelectListItem("Falha", "false", q.Success == false)
+    };
+    var pageSizeOptions = new[] { 25, 50, 100, 200 }
+        .Select(size => new SelectListItem(size.ToString(), size.ToString(), q.PageSize == size));
+}
+<p><a asp-controller="Admin" asp-action="Index">← Administração</a></p>
+
+<div class="page-header">
+    <div>
+        <h1>Eventos de auditoria</h1>
+        <p class="muted">@r.TotalCount evento(s) encontrados. Horários em UTC.</p>
+    </div>
+</div>
+
+<form asp-controller="Admin" asp-action="Logs" method="get" class="card filters">
+    <div class="field">
+        <label for="f-type">Tipo de evento</label>
+        <select id="f-type" name="EventType" asp-items="eventTypeOptions">
+            <option value="">Todos</option>
+        </select>
+    </div>
+    <div class="field">
+        <label for="f-sev">Severidade</label>
+        <select id="f-sev" name="Severity" asp-items="severityOptions">
+            <option value="">Todas</option>
+        </select>
+    </div>
+    <div class="field">
+        <label for="f-user">Usuário</label>
+        <input id="f-user" name="Username" value="@q.Username" maxlength="256" />
+    </div>
+    <div class="field">
+        <label for="f-success">Resultado</label>
+        <select id="f-success" name="Success" asp-items="successOptions">
+            <option value="">Todos</option>
+        </select>
+    </div>
+    <div class="field">
+        <label for="f-from">De (UTC)</label>
+        <input id="f-from" name="From" type="datetime-local" value="@q.From?.ToString("yyyy-MM-ddTHH:mm")" />
+    </div>
+    <div class="field">
+        <label for="f-to">Até (UTC)</label>
+        <input id="f-to" name="To" type="datetime-local" value="@q.To?.ToString("yyyy-MM-ddTHH:mm")" />
+    </div>
+    <div class="field">
+        <label for="f-size">Por página</label>
+        <select id="f-size" name="PageSize" asp-items="pageSizeOptions"></select>
+    </div>
+    <div class="field filter-actions">
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+        <a class="btn btn-ghost" asp-controller="Admin" asp-action="Logs">Limpar</a>
+    </div>
+</form>
+
+<section class="card">
+    @if (r.Items.Count == 0)
+    {
+        <p class="muted">Nenhum evento para os filtros informados.</p>
+    }
+    else
+    {
+        <div class="table-wrap">
+            <table class="table table-compact">
+                <thead>
+                    <tr>
+                        <th>Data/hora</th>
+                        <th>Evento</th>
+                        <th>Sev.</th>
+                        <th>Resultado</th>
+                        <th>Usuário</th>
+                        <th>IP</th>
+                        <th>Requisição</th>
+                        <th>Ação / Recurso</th>
+                        <th>Detalhes</th>
+                        <th>request_id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var e in r.Items)
+                    {
+                        <tr>
+                            <td class="nowrap">@DisplayHelpers.FormatDate(e.Timestamp)</td>
+                            <td>@e.EventType</td>
+                            <td><span class="@DisplayHelpers.SeverityCss(e.Severity)">@e.Severity</span></td>
+                            <td>
+                                @if (e.Success)
+                                {
+                                    <span class="outcome ok">sucesso</span>
+                                }
+                                else
+                                {
+                                    <span class="outcome fail">falha</span>
+                                }
+                            </td>
+                            <td>@(e.Username ?? "—")@if (e.UserId is not null) { <span class="muted small"> #@e.UserId</span> }</td>
+                            <td class="mono">@(e.SourceIp ?? "—")</td>
+                            <td class="mono small">@e.HttpMethod @e.Endpoint</td>
+                            <td class="mono small">@e.Action<br />@e.Resource</td>
+                            <td class="small">@e.Details</td>
+                            <td class="mono small">@e.RequestId</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <nav class="pagination" aria-label="Paginação">
+            @if (r.HasPrevious)
+            {
+                <a class="btn btn-secondary btn-sm" asp-controller="Admin" asp-action="Logs" asp-all-route-data="Model.RouteForPage(r.Page - 1)">← Anterior</a>
+            }
+            <span class="muted small">Página @r.Page de @Math.Max(r.TotalPages, 1)</span>
+            @if (r.HasNext)
+            {
+                <a class="btn btn-secondary btn-sm" asp-controller="Admin" asp-action="Logs" asp-all-route-data="Model.RouteForPage(r.Page + 1)">Próxima →</a>
+            }
+        </nav>
+    }
+</section>

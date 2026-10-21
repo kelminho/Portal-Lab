@@ -1,0 +1,58 @@
+@model DocumentUploadViewModel
+@{
+    ViewData["Title"] = "Novo documento";
+    var accept = string.Join(",", Model.AllowedExtensions);
+}
+<p><a asp-controller="Documents" asp-action="Index">← Voltar aos documentos</a></p>
+
+<section class="card narrow">
+    <h1>Novo documento</h1>
+    <p class="muted">Envie um arquivo <strong>ou</strong> escreva o conteúdo em texto.</p>
+
+    <form asp-controller="Documents" asp-action="Upload" method="post" enctype="multipart/form-data" novalidate>
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+        <div class="field">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" maxlength="200" />
+            <span asp-validation-for="Title" class="field-error"></span>
+        </div>
+
+        <div class="field">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" rows="2" maxlength="1000"></textarea>
+            <span asp-validation-for="Description" class="field-error"></span>
+        </div>
+
+        <div class="field">
+            <label asp-for="Classification"></label>
+            <select asp-for="Classification" asp-items="Model.ClassificationOptions"></select>
+            <span class="hint">Você só pode publicar até o nível de sigilo que o seu papel consegue ler.</span>
+        </div>
+
+        <fieldset class="fieldset">
+            <legend>Opção 1 — Arquivo</legend>
+            <div class="field">
+                <label asp-for="File"></label>
+                <input asp-for="File" type="file" accept="@accept"
+                       data-max-bytes="@Model.MaxFileSizeBytes" data-info-target="#file-info" />
+                <span id="file-info" class="hint"></span>
+                <span class="hint">
+                    Tipos permitidos: @string.Join(", ", Model.AllowedExtensions) ·
+                    Tamanho máximo: @DisplayHelpers.FormatBytes(Model.MaxFileSizeBytes)
+                </span>
+            </div>
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend>Opção 2 — Texto</legend>
+            <div class="field">
+                <label asp-for="Content"></label>
+                <textarea asp-for="Content" rows="8" maxlength="20000"></textarea>
+                <span asp-validation-for="Content" class="field-error"></span>
+            </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary">Publicar</button>
+    </form>
+</section>

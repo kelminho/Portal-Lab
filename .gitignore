@@ -1,0 +1,36 @@
+# Build
+bin/
+obj/
+publish/
+*.user
+*.suo
+*.swp
+
+# IDEs
+.vs/
+.vscode/
+.idea/
+*.DotSettings.user
+
+# Testes
+TestResults/
+coverage*/
+*.trx
+
+# Logs gerados pela aplicação (mantém apenas a pasta)
+logs/*
+!logs/.gitkeep
+!logs/README.md
+
+# Dados locais (uploads, chaves de Data Protection)
+data/
+src/SecureCorpPortal/data/
+src/SecureCorpPortal/logs/
+
+# Configuração local / segredos
+.env
+appsettings.*.local.json
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

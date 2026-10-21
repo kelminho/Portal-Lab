@@ -1,0 +1,8 @@
+# Normaliza finais de linha no repositório
+* text=auto eol=lf
+*.cs text eol=lf
+*.cshtml text eol=lf
+*.sln text eol=crlf
+*.png binary
+*.jpg binary
+*.pdf binary

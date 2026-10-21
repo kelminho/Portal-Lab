@@ -1,0 +1,46 @@
+@model IReadOnlyList<AuditEventDto>
+@if (Model.Count == 0)
+{
+    <p class="muted">Nenhum evento registrado.</p>
+}
+else
+{
+    <div class="table-wrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Data/hora</th>
+                    <th>Evento</th>
+                    <th>Severidade</th>
+                    <th>Resultado</th>
+                    <th>Usuário</th>
+                    <th>IP</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var e in Model)
+                {
+                    <tr>
+                        <td class="nowrap">@DisplayHelpers.FormatDate(e.Timestamp)</td>
+                        <td>@e.EventType</td>
+                        <td><span class="@DisplayHelpers.SeverityCss(e.Severity)">@e.Severity</span></td>
+                        <td>
+                            @if (e.Success)
+                            {
+                                <span class="outcome ok">sucesso</span>
+                            }
+                            else
+                            {
+                                <span class="outcome fail">falha</span>
+                            }
+                        </td>
+                        <td>@(e.Username ?? "—")</td>
+                        <td class="mono">@(e.SourceIp ?? "—")</td>
+                        <td class="mono">@e.Action</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

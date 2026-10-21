@@ -1,0 +1,32 @@
+@model UserDto
+@{
+    ViewData["Title"] = Model.FullName;
+}
+<p><a asp-controller="Users" asp-action="Index">← Voltar ao diretório</a></p>
+
+<section class="card narrow">
+    <h1>@Model.FullName</h1>
+    <dl class="details">
+        <dt>Usuário</dt>
+        <dd>@Model.UserName</dd>
+        <dt>E-mail</dt>
+        <dd>@Model.Email</dd>
+        <dt>Departamento</dt>
+        <dd>@(Model.Department ?? "—")</dd>
+        <dt>Cargo</dt>
+        <dd>@(Model.JobTitle ?? "—")</dd>
+        <dt>Papel</dt>
+        <dd><span class="@DisplayHelpers.RoleCss(Model.Role)">@Model.Role</span></dd>
+        <dt>Status</dt>
+        <dd>@(Model.IsActive ? "Ativo" : "Inativo")</dd>
+        <dt>Criado em</dt>
+        <dd>@DisplayHelpers.FormatDate(Model.CreatedAt)</dd>
+        <dt>Último login</dt>
+        <dd>@DisplayHelpers.FormatDate(Model.LastLoginAt)</dd>
+    </dl>
+
+    @if (User.IsInRole(AppRoles.Admin))
+    {
+        <a class="btn btn-secondary" asp-controller="Admin" asp-action="EditUser" asp-route-id="@Model.Id">Gerenciar usuário</a>
+    }
+</section>

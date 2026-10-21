@@ -1,0 +1,14 @@
+# ---------------------------------------------------------------------------
+# Override OPCIONAL para desenvolvimento com "dotnet run" na máquina host.
+# Sobe apenas o PostgreSQL e o publica em 127.0.0.1:5432.
+#
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d db
+#   dotnet run --project src/SecureCorpPortal
+# ---------------------------------------------------------------------------
+services:
+  db:
+    ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - backend
+      - frontend

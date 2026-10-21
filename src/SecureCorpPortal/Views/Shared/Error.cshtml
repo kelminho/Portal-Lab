@@ -1,0 +1,14 @@
+@model ErrorViewModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+<section class="card narrow center">
+    <p class="error-code">@Model.StatusCode</p>
+    <h1>@Model.Title</h1>
+    <p class="muted">@Model.Message</p>
+    @if (!string.IsNullOrEmpty(Model.RequestId))
+    {
+        <p class="small">Código da requisição (request_id): <code>@Model.RequestId</code></p>
+    }
+    <p><a class="btn btn-primary" href="/">Voltar ao início</a></p>
+</section>

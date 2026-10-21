@@ -1,0 +1,31 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Entrar";
+}
+<section class="auth-card card">
+    <h1>Entrar no portal</h1>
+    <p class="muted">Acesso restrito a colaboradores da SecureCorp.</p>
+
+    <form asp-controller="Account" asp-action="Login" method="post" novalidate>
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+        <input type="hidden" asp-for="ReturnUrl" />
+
+        <div class="field">
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" autocomplete="username" autofocus />
+            <span asp-validation-for="UserName" class="field-error"></span>
+        </div>
+
+        <div class="field">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" autocomplete="current-password" />
+            <span asp-validation-for="Password" class="field-error"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+    </form>
+
+    <p class="muted small center">
+        Ainda não tem conta? <a asp-controller="Account" asp-action="Register">Cadastre-se</a>
+    </p>
+</section>

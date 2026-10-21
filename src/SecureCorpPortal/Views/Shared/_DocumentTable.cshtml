@@ -1,0 +1,39 @@
+@model IReadOnlyList<DocumentDto>
+@if (Model.Count == 0)
+{
+    <p class="muted">Nenhum documento encontrado.</p>
+}
+else
+{
+    <div class="table-wrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Classificação</th>
+                    <th>Tipo</th>
+                    <th>Responsável</th>
+                    <th>Criado em</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var d in Model)
+                {
+                    <tr>
+                        <td>
+                            <a asp-controller="Documents" asp-action="Details" asp-route-id="@d.Id">@d.Title</a>
+                            @if (!string.IsNullOrEmpty(d.Description))
+                            {
+                                <div class="muted small">@d.Description</div>
+                            }
+                        </td>
+                        <td><span class="@DisplayHelpers.ClassificationCss(d.Classification)">@DisplayHelpers.ClassificationLabel(d.Classification)</span></td>
+                        <td>@(d.HasFile ? "Arquivo" : "Texto")</td>
+                        <td>@(d.OwnerName ?? "—")</td>
+                        <td class="nowrap">@DisplayHelpers.FormatDate(d.CreatedAt)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

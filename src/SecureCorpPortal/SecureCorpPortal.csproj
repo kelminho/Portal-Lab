@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>SecureCorpPortal</RootNamespace>
+    <AssemblyName>SecureCorpPortal</AssemblyName>
+    <UserSecretsId>securecorp-portal-lab</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Identity + EF Core (usuários, papéis, hash de senha, lockout) -->
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
+    <!-- Provider PostgreSQL para EF Core -->
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+    <!-- Necessário para "dotnet ef migrations" -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <!-- Serilog (inclui sinks Console/File e leitura de configuração) -->
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="SecureCorpPortal.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Diretórios de dados locais nunca fazem parte do build/publish -->
+    <Content Remove="data\**" />
+    <Content Remove="logs\**" />
+    <None Remove="data\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+
+</Project>

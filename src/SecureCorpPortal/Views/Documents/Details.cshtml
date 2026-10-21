@@ -1,0 +1,50 @@
+@model DocumentDetailsViewModel
+@{
+    var doc = Model.Document;
+    ViewData["Title"] = doc.Title;
+}
+<p><a asp-controller="Documents" asp-action="Index">← Voltar aos documentos</a></p>
+
+<section class="card">
+    <div class="card-header">
+        <h1>@doc.Title</h1>
+        <span class="@DisplayHelpers.ClassificationCss(doc.Classification)">@DisplayHelpers.ClassificationLabel(doc.Classification)</span>
+    </div>
+
+    @if (!string.IsNullOrEmpty(doc.Description))
+    {
+        <p class="lead">@doc.Description</p>
+    }
+
+    <dl class="details inline">
+        <dt>Responsável</dt>
+        <dd>@(doc.OwnerName ?? "—")</dd>
+        <dt>Criado em</dt>
+        <dd>@DisplayHelpers.FormatDate(doc.CreatedAt)</dd>
+        @if (doc.HasFile)
+        {
+            <dt>Arquivo</dt>
+            <dd>@doc.OriginalFileName (@DisplayHelpers.FormatBytes(doc.SizeBytes), @doc.ContentType)</dd>
+        }
+    </dl>
+
+    @if (!string.IsNullOrEmpty(doc.Content))
+    {
+        @* O Razor codifica (HTML-encode) automaticamente todo texto exibido com @ *@
+        <pre class="document-content">@doc.Content</pre>
+    }
+
+    <div class="actions">
+        @if (doc.HasFile)
+        {
+            <a class="btn btn-primary" asp-controller="Documents" asp-action="Download" asp-route-id="@doc.Id">Baixar arquivo</a>
+        }
+        @if (Model.CanDelete)
+        {
+            <form asp-controller="Documents" asp-action="Delete" asp-route-id="@doc.Id" method="post" class="inline-form"
+                  data-confirm="Excluir definitivamente este documento?">
+                <button type="submit" class="btn btn-danger">Excluir</button>
+            </form>
+        }
+    </div>
+</section>

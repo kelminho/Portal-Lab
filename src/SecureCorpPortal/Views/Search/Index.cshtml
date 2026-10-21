@@ -1,0 +1,50 @@
+@model SearchViewModel
+@{
+    ViewData["Title"] = "Busca";
+}
+<div class="page-header">
+    <div>
+        <h1>Busca</h1>
+        <p class="muted">
+            Pesquisa em documentos@(Model.CanSearchUsers ? " e usuários" : string.Empty).
+            Os resultados respeitam as permissões do seu papel.
+        </p>
+    </div>
+</div>
+
+<form asp-controller="Search" asp-action="Index" method="get" class="search-bar" role="search">
+    <input type="search" name="q" value="@Model.Query" maxlength="100" placeholder="Digite um termo…" aria-label="Termo de busca" autofocus />
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+@if (Model.HasQuery)
+{
+    <section class="card">
+        <h2>Documentos <span class="muted small">(@Model.Documents.Count)</span></h2>
+        <partial name="_DocumentTable" model="Model.Documents" />
+    </section>
+
+    @if (Model.CanSearchUsers)
+    {
+        <section class="card">
+            <h2>Usuários <span class="muted small">(@Model.Users.Count)</span></h2>
+            @if (Model.Users.Count == 0)
+            {
+                <p class="muted">Nenhum usuário encontrado.</p>
+            }
+            else
+            {
+                <ul class="result-list">
+                    @foreach (var u in Model.Users)
+                    {
+                        <li>
+                            <a asp-controller="Users" asp-action="Details" asp-route-id="@u.Id">@u.FullName</a>
+                            <span class="muted small">@u.UserName · @(u.Department ?? "—")</span>
+                            <span class="@DisplayHelpers.RoleCss(u.Role)">@u.Role</span>
+                        </li>
+                    }
+                </ul>
+            }
+        </section>
+    }
+}

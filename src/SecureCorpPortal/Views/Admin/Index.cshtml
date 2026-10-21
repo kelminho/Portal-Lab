@@ -1,0 +1,54 @@
+@model AdminIndexViewModel
+@{
+    ViewData["Title"] = "Administração";
+}
+<div class="page-header">
+    <div>
+        <h1>Administração</h1>
+        <p class="muted">Gestão de usuários, auditoria e status do ambiente.</p>
+    </div>
+    <div class="actions">
+        <a class="btn btn-primary" asp-controller="Admin" asp-action="Users">Gerenciar usuários</a>
+        <a class="btn btn-secondary" asp-controller="Admin" asp-action="Logs">Eventos de auditoria</a>
+    </div>
+</div>
+
+@if (Model.Dashboard.Analytics is not null)
+{
+    <partial name="_SecurityAnalytics" model="Model.Dashboard.Analytics" />
+}
+
+<div class="grid-2">
+    <section class="card">
+        <div class="card-header">
+            <h2>Últimos eventos de auditoria</h2>
+            <a asp-controller="Admin" asp-action="Logs">Ver todos</a>
+        </div>
+        <partial name="_AuditTable" model="Model.Dashboard.RecentAuditEvents ?? Array.Empty<AuditEventDto>()" />
+    </section>
+
+    <section class="card">
+        <h2>Laboratório de segurança</h2>
+        <dl class="details">
+            <dt>Status</dt>
+            <dd>
+                @if (Model.Lab.Enabled)
+                {
+                    <span class="badge sev-high">HABILITADO</span>
+                }
+                else
+                {
+                    <span class="badge sev-info">Desabilitado</span>
+                }
+            </dd>
+            <dt>Módulos disponíveis</dt>
+            <dd>@Model.Lab.Available.Count</dd>
+            <dt>Módulos ativos</dt>
+            <dd>@Model.Lab.Active.Count</dd>
+        </dl>
+        <p class="muted small">
+            Ponto de extensão reservado para exercícios futuros (ver <code>docs/security/extension-points.md</code>).
+            Nenhum módulo foi implementado nesta etapa.
+        </p>
+    </section>
+</div>
