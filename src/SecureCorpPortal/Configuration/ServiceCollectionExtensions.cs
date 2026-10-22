@@ -1,4 +1,6 @@
+using System.Net;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SecureCorpPortal.Data;
@@ -19,6 +21,52 @@ public static class ServiceCollectionExtensions
         services.Configure<SeedOptions>(configuration.GetSection(SeedOptions.SectionName));
         services.Configure<AppLoggingOptions>(configuration.GetSection(AppLoggingOptions.SectionName));
         return services;
+    }
+
+    /// <summary>
+    /// Habilita ForwardedHeaders somente quando ForwardedHeaders:Enabled=true, confiando
+    /// apenas nos proxies/redes configurados (a lista padrão do ASP.NET Core é substituída).
+    /// </summary>
+    public static IServiceCollection AddPortalForwardedHeaders(this IServiceCollection services, IConfiguration configuration)
+    {
+        var settings = configuration.GetSection(ForwardedHeadersSettings.SectionName).Get<ForwardedHeadersSettings>()
+                       ?? new ForwardedHeadersSettings();
+        if (!settings.Enabled)
+        {
+            return services;
+        }
+
+        services.Configure<ForwardedHeadersOptions>(options =>
+        {
+            options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            options.KnownProxies.Clear();
+            options.KnownNetworks.Clear();
+
+            foreach (var proxy in settings.KnownProxies)
+            {
+                options.KnownProxies.Add(IPAddress.Parse(proxy));
+            }
+
+            foreach (var network in settings.KnownNetworks)
+            {
+                var parts = network.Split('/');
+                options.KnownNetworks.Add(new Microsoft.AspNetCore.HttpOverrides.IPNetwork(IPAddress.Parse(parts[0]), int.Parse(parts[1])));
+            }
+        });
+
+        return services;
+    }
+
+    public static WebApplication UsePortalForwardedHeaders(this WebApplication app)
+    {
+        var enabled = app.Configuration.GetSection(ForwardedHeadersSettings.SectionName)
+            .Get<ForwardedHeadersSettings>()?.Enabled == true;
+        if (enabled)
+        {
+            app.UseForwardedHeaders();
+        }
+
+        return app;
     }
 
     public static IServiceCollection AddPortalDatabase(this IServiceCollection services)

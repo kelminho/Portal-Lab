@@ -28,6 +28,56 @@ public static class SensitiveData
     }
 }
 
+/// <summary>
+/// Prepara a query string da requisição para o log: mantém o texto bruto (codificado),
+/// que é o que as detecções de SQLi/XSS/path traversal precisam analisar, mas mascara
+/// o valor de parâmetros com nome sensível (ex.: "token", "password").
+/// </summary>
+public static class QueryStringLogFormatter
+{
+    public const int MaxLength = 2048;
+
+    public static string? Format(string? queryString)
+    {
+        if (string.IsNullOrEmpty(queryString))
+        {
+            return null;
+        }
+
+        var pairs = queryString.TrimStart('?')
+            .Split('&', StringSplitOptions.RemoveEmptyEntries)
+            .Select(MaskIfSensitive);
+
+        return LogSanitizer.Clean(string.Join('&', pairs), MaxLength);
+    }
+
+    private static string MaskIfSensitive(string pair)
+    {
+        var separator = pair.IndexOf('=');
+        if (separator < 0)
+        {
+            return pair;
+        }
+
+        var key = pair[..separator];
+        return SensitiveData.IsSensitiveKey(SafeUnescape(key))
+            ? $"{key}={SensitiveData.Mask}"
+            : pair;
+    }
+
+    private static string SafeUnescape(string value)
+    {
+        try
+        {
+            return Uri.UnescapeDataString(value);
+        }
+        catch (UriFormatException)
+        {
+            return value;
+        }
+    }
+}
+
 /// <summary>Limpeza de valores vindos do usuário antes de irem para log/auditoria.</summary>
 public static class LogSanitizer
 {

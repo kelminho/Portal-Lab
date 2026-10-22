@@ -29,6 +29,7 @@ builder.Services.AddSerilog(
 //    (ver Configuration/ServiceCollectionExtensions.cs).
 // ---------------------------------------------------------------------------
 builder.Services.AddPortalOptions(builder.Configuration);
+builder.Services.AddPortalForwardedHeaders(builder.Configuration);
 builder.Services.AddPortalDatabase();
 builder.Services.AddPortalIdentity();
 builder.Services.AddPortalDataProtection(builder.Configuration, builder.Environment);
@@ -59,6 +60,7 @@ var app = builder.Build();
 // Pipeline HTTP — a ORDEM dos middlewares importa.
 // Ver docs/architecture/request-flow.md para a explicação de cada etapa.
 // ---------------------------------------------------------------------------
+app.UsePortalForwardedHeaders();                     // IP real atrás de proxy (opt-in, só redes confiáveis)
 app.UseMiddleware<CorrelationMiddleware>();          // request_id + contexto de log
 app.UseExceptionHandler("/error");                   // exceções -> log + resposta genérica
 app.UseStatusCodePagesWithReExecute("/error/{0}");   // páginas amigáveis para 403/404

@@ -78,6 +78,23 @@ public class LogFileIntegrationTests : IClassFixture<PortalWebApplicationFactory
     }
 
     [Fact]
+    public async Task QueryString_IsLoggedForDetection_WithSensitiveParametersMasked()
+    {
+        const string requestId = "lab-test-query-0001";
+        using var client = await _factory.CreateClientAsAsync(DemoAccounts.Employee);
+        using var request = new HttpRequestMessage(HttpMethod.Get, "/api/documents?q=%27%20OR%201%3D1--&token=segredo-xyz");
+        request.Headers.Add(CorrelationMiddleware.RequestIdHeader, requestId);
+
+        await client.SendAsync(request);
+
+        var log = await ReadLogAsync("securecorp-*.json");
+        Assert.DoesNotContain("segredo-xyz", log.Raw);
+        var http = Assert.Single(log.Entries, e => Str(e, "request_id") == requestId && Str(e, "event_type") == "HttpRequest");
+        Assert.Equal("/api/documents", Str(http, "endpoint"));
+        Assert.Equal("q=%27%20OR%201%3D1--&token=[REDACTED]", Str(http, "query_string"));
+    }
+
+    [Fact]
     public async Task InvalidRequestIdHeader_IsReplacedByGeneratedId()
     {
         using var client = _factory.CreatePortalClient();

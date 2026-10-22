@@ -64,6 +64,27 @@ public class SupportingComponentsTests
     }
 
     [Theory]
+    [InlineData(null, null)]
+    [InlineData("", null)]
+    [InlineData("?q=incidentes", "q=incidentes")]
+    [InlineData("?q=%27%20OR%201%3D1--", "q=%27%20OR%201%3D1--")]
+    [InlineData("?q=a&token=abc123", "q=a&token=[REDACTED]")]
+    [InlineData("?access%5Ftoken=abc&page=2", "access%5Ftoken=[REDACTED]&page=2")]
+    [InlineData("?flag", "flag")]
+    public void QueryStringLogFormatter_KeepsPayloadButMasksSensitiveParameters(string? input, string? expected)
+    {
+        Assert.Equal(expected, QueryStringLogFormatter.Format(input));
+    }
+
+    [Fact]
+    public void QueryStringLogFormatter_TruncatesLongValues()
+    {
+        var result = QueryStringLogFormatter.Format("?q=" + new string('a', 5000));
+
+        Assert.Equal(QueryStringLogFormatter.MaxLength, result!.Length);
+    }
+
+    [Theory]
     [InlineData("valid-request-id-123", true)]
     [InlineData("short", false)]
     [InlineData("has spaces in it", false)]

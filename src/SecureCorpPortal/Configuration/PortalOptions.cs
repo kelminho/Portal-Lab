@@ -48,6 +48,23 @@ public sealed class AppLoggingOptions
     public string ConsoleFormat { get; set; } = "text";
 }
 
+/// <summary>
+/// Confiança em X-Forwarded-For/Proto de um proxy reverso (seção "ForwardedHeaders").
+/// Desligado por padrão: aceitar esses headers de qualquer origem permitiria forjar o source_ip.
+/// </summary>
+public sealed class ForwardedHeadersSettings
+{
+    public const string SectionName = "ForwardedHeaders";
+
+    public bool Enabled { get; set; }
+
+    /// <summary>IPs dos proxies confiáveis (ex.: "172.19.0.1").</summary>
+    public string[] KnownProxies { get; set; } = [];
+
+    /// <summary>Redes confiáveis em CIDR (ex.: "172.16.0.0/12").</summary>
+    public string[] KnownNetworks { get; set; } = [];
+}
+
 /// <summary>Limites fixos de requisição para upload (aplicados antes do model binding).</summary>
 public static class UploadLimits
 {

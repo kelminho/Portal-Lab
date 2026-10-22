@@ -37,6 +37,7 @@ public sealed class SiemJsonFormatter : ITextFormatter
         LogFields.Username,
         LogFields.HttpMethod,
         LogFields.Endpoint,
+        LogFields.QueryString,
         LogFields.StatusCode,
         LogFields.DurationMs,
         LogFields.UserAgent,

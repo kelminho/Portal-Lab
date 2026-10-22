@@ -10,7 +10,7 @@ namespace SecureCorpPortal.Middleware;
 /// 1. define o request_id (reaproveita X-Request-ID se válido, senão gera um novo);
 /// 2. devolve o request_id no header de resposta X-Request-ID;
 /// 3. adiciona ao contexto de log os campos request_id, source_ip, http_method,
-///    endpoint e user_agent — assim TODO log da requisição carrega esses campos.
+///    endpoint, query_string (parâmetros sensíveis mascarados) e user_agent — assim TODO log da requisição carrega esses campos.
 /// </summary>
 public sealed partial class CorrelationMiddleware
 {
@@ -38,6 +38,8 @@ public sealed partial class CorrelationMiddleware
         using (LogContext.PushProperty(LogFields.SourceIp, context.GetSourceIp()))
         using (LogContext.PushProperty(LogFields.HttpMethod, context.Request.Method))
         using (LogContext.PushProperty(LogFields.Endpoint, context.Request.Path.Value ?? "/"))
+        using (LogContext.PushProperty(LogFields.QueryString,
+                   QueryStringLogFormatter.Format(context.Request.QueryString.Value)))
         using (LogContext.PushProperty(LogFields.UserAgent,
                    LogSanitizer.Clean(context.Request.Headers.UserAgent.ToString(), 512)))
         {

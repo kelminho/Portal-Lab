@@ -15,6 +15,7 @@ public static class LogFields
     public const string UserId = "user_id";
     public const string HttpMethod = "http_method";
     public const string Endpoint = "endpoint";
+    public const string QueryString = "query_string";
     public const string StatusCode = "status_code";
     public const string DurationMs = "duration_ms";
     public const string UserAgent = "user_agent";
