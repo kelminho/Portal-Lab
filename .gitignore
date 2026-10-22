@@ -23,9 +23,11 @@ logs/*
 !logs/README.md
 
 # Dados locais (uploads, chaves de Data Protection)
-data/
-src/SecureCorpPortal/data/
-src/SecureCorpPortal/logs/
+# Âncoras evitam casar com o pacote de código "Data/" (git no Windows ignora maiúsculas).
+/data/
+/src/SecureCorpPortal/data/uploads/
+/src/SecureCorpPortal/data/keys/
+/src/SecureCorpPortal/logs/
 
 # Configuração local / segredos
 .env
