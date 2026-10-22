@@ -1,0 +1,105 @@
+=== PT-T16-20261022T210231Z-123  GET /search
+curl_args : -G --data-urlencode q=' 
+status    : 200   tempo: 0.095479s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Busca .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<b
+
+=== PT-T16-20261022T210231Z-124  GET /documents
+curl_args : -G --data-urlencode q=' 
+status    : 200   tempo: 0.017238s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Documentos .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</hea
+
+=== PT-T16-20261022T210231Z-125  GET /api/documents
+curl_args : -G --data-urlencode q=' 
+status    : 200   tempo: 0.011656s   location: -
+body[0:300]: []
+
+=== PT-T16-20261022T210231Z-126  GET /search
+curl_args : -G --data-urlencode q=" OR 1=1 -- 
+status    : 200   tempo: 0.009190s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Busca .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<b
+
+=== PT-T16-20261022T210231Z-127  GET /documents
+curl_args : -G --data-urlencode q=" OR 1=1 -- 
+status    : 200   tempo: 0.011230s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Documentos .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</hea
+
+=== PT-T16-20261022T210231Z-128  GET /api/documents
+curl_args : -G --data-urlencode q=" OR 1=1 -- 
+status    : 200   tempo: 0.022965s   location: -
+body[0:300]: []
+
+=== PT-T16-20261022T210231Z-129  GET /search
+curl_args : -G --data-urlencode q=<script>alert(1)</script> 
+status    : 200   tempo: 0.021325s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Busca .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<b
+
+=== PT-T16-20261022T210231Z-130  GET /documents
+curl_args : -G --data-urlencode q=<script>alert(1)</script> 
+status    : 200   tempo: 0.010812s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Documentos .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</hea
+
+=== PT-T16-20261022T210231Z-131  GET /api/documents
+curl_args : -G --data-urlencode q=<script>alert(1)</script> 
+status    : 200   tempo: 0.008207s   location: -
+body[0:300]: []
+
+=== PT-T16-20261022T210231Z-132  GET /search
+curl_args : -G --data-urlencode q=% 
+status    : 200   tempo: 0.009828s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Busca .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<b
+
+=== PT-T16-20261022T210231Z-133  GET /documents
+curl_args : -G --data-urlencode q=% 
+status    : 200   tempo: 0.009899s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Documentos .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</hea
+
+=== PT-T16-20261022T210231Z-134  GET /api/documents
+curl_args : -G --data-urlencode q=% 
+status    : 200   tempo: 0.010298s   location: -
+body[0:300]: []
+
+=== PT-T16-20261022T210231Z-135  GET /search
+curl_args : -G --data-urlencode q=_ 
+status    : 200   tempo: 0.031249s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Busca .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<b
+
+=== PT-T16-20261022T210231Z-136  GET /documents
+curl_args : -G --data-urlencode q=_ 
+status    : 200   tempo: 0.046544s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Documentos .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</hea
+
+=== PT-T16-20261022T210231Z-137  GET /api/documents
+curl_args : -G --data-urlencode q=_ 
+status    : 200   tempo: 0.008658s   location: -
+body[0:300]: []
+
+=== PT-T16-20261022T210231Z-138  GET /search
+curl_args : -G --data-urlencode q=' UNION SELECT NULL-- 
+status    : 200   tempo: 0.010132s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Busca .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<b
+
+=== PT-T16-20261022T210231Z-139  GET /documents
+curl_args : -G --data-urlencode q=' UNION SELECT NULL-- 
+status    : 200   tempo: 0.009061s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Documentos .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</hea
+
+=== PT-T16-20261022T210231Z-140  GET /api/documents
+curl_args : -G --data-urlencode q=' UNION SELECT NULL-- 
+status    : 200   tempo: 0.014857s   location: -
+body[0:300]: []
+
+=== PT-T16-20261022T210231Z-141  GET /search
+curl_args : -G --data-urlencode q=../../etc/passwd 
+status    : 200   tempo: 0.008452s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Busca .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<b
+
+=== PT-T16-20261022T210231Z-142  GET /documents
+curl_args : -G --data-urlencode q=../../etc/passwd 
+status    : 200   tempo: 0.008717s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Documentos .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</hea
+
+=== PT-T16-20261022T210231Z-143  GET /api/documents
+curl_args : -G --data-urlencode q=../../etc/passwd 
+status    : 200   tempo: 0.009361s   location: -
+body[0:300]: []
+

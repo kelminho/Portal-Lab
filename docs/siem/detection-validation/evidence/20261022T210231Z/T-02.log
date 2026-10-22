@@ -1,0 +1,160 @@
+=== PT-T02-20261022T210231Z-026  GET /documents/11/download
+curl_args :  
+status    : 403   tempo: 0.073900s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-027  GET /documents/1/download
+curl_args :  
+status    : 404   tempo: 0.022304s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-028  GET /documents/2/download
+curl_args :  
+status    : 404   tempo: 0.012232s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-029  GET /documents/3/download
+curl_args :  
+status    : 404   tempo: 0.012555s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-030  GET /documents/4/download
+curl_args :  
+status    : 404   tempo: 0.012292s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-031  GET /documents/5/download
+curl_args :  
+status    : 404   tempo: 0.012079s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-032  GET /documents/6/download
+curl_args :  
+status    : 404   tempo: 0.012373s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-033  GET /documents/7/download
+curl_args :  
+status    : 403   tempo: 0.016295s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-034  GET /documents/8/download
+curl_args :  
+status    : 403   tempo: 0.019153s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-035  GET /documents/9/download
+curl_args :  
+status    : 403   tempo: 0.016494s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-036  GET /documents/10/download
+curl_args :  
+status    : 403   tempo: 0.025703s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-037  GET /documents/11/download
+curl_args :  
+status    : 403   tempo: 0.015312s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-038  GET /documents/12/download
+curl_args :  
+status    : 404   tempo: 0.013273s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-039  GET /documents/13/download
+curl_args :  
+status    : 404   tempo: 0.010550s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-040  GET /documents/14/download
+curl_args :  
+status    : 404   tempo: 0.020873s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-041  GET /documents/15/download
+curl_args :  
+status    : 404   tempo: 0.011432s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-042  GET /documents/11/download
+curl_args :  
+status    : 403   tempo: 0.022279s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-043  GET /documents/1/download
+curl_args :  
+status    : 404   tempo: 0.016259s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-044  GET /documents/2/download
+curl_args :  
+status    : 404   tempo: 0.012713s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-045  GET /documents/3/download
+curl_args :  
+status    : 404   tempo: 0.011587s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-046  GET /documents/4/download
+curl_args :  
+status    : 403   tempo: 0.019666s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-047  GET /documents/5/download
+curl_args :  
+status    : 403   tempo: 0.024561s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-048  GET /documents/6/download
+curl_args :  
+status    : 403   tempo: 0.114285s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-049  GET /documents/7/download
+curl_args :  
+status    : 403   tempo: 0.017541s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-050  GET /documents/8/download
+curl_args :  
+status    : 403   tempo: 0.014792s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-051  GET /documents/9/download
+curl_args :  
+status    : 403   tempo: 0.014670s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-052  GET /documents/10/download
+curl_args :  
+status    : 403   tempo: 0.015977s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-053  GET /documents/11/download
+curl_args :  
+status    : 403   tempo: 0.017706s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+=== PT-T02-20261022T210231Z-054  GET /documents/12/download
+curl_args :  
+status    : 404   tempo: 0.021909s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-055  GET /documents/13/download
+curl_args :  
+status    : 404   tempo: 0.009784s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-056  GET /documents/14/download
+curl_args :  
+status    : 404   tempo: 0.011067s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T02-20261022T210231Z-057  GET /documents/15/download
+curl_args :  
+status    : 404   tempo: 0.009745s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+

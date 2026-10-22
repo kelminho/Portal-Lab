@@ -26,6 +26,8 @@ Salvo indicação, use `security-*.json`.
 | 19 | Laboratório ativo | `SecurityLabEnabled` fora de janela planejada | Alta |
 | 20 | Usuário × IP incomum | `UserLogin` do mesmo `username` a partir de ≥ 2 `source_ip` distintos em 1 h | Média |
 
+> Regras CQL por teste, com limiares, falsos positivos e procedimento de validação: [detection-validation/detection-rules.md](detection-validation/detection-rules.md).
+
 ## Correlação
 
 - Use `request_id` para juntar `HttpRequest` + evento de auditoria da mesma requisição.

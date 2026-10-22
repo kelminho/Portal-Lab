@@ -1,0 +1,20 @@
+=== PT-T03-20261022T210231Z-058  GET /api/users/2
+curl_args :  
+status    : 403   tempo: 0.018707s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.4","title":"Acesso negado.","status":403,"detail":"Voc.. s.. pode consultar o pr..prio perfil.","traceId":"00-2fe74a7faa11e831becd8dddeeec5821-996f4a4918d6811c-00"}
+
+=== PT-T03-20261022T210231Z-059  GET /api/users/1
+curl_args :  
+status    : 403   tempo: 0.016169s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.4","title":"Acesso negado.","status":403,"detail":"Voc.. s.. pode consultar o pr..prio perfil.","traceId":"00-23e815eb0e25023d320fadb11e23deb4-db6ead1aaf919d53-00"}
+
+=== PT-T03-20261022T210231Z-060  GET /api/users/9999
+curl_args :  
+status    : 403   tempo: 0.013256s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.4","title":"Acesso negado.","status":403,"detail":"Voc.. s.. pode consultar o pr..prio perfil.","traceId":"00-254cbc00d466881102c6153bdc699212-87917fdf0a7c7c3e-00"}
+
+=== PT-T03-20261022T210231Z-061  GET /api/users/3
+curl_args :  
+status    : 200   tempo: 0.010647s   location: -
+body[0:300]: {"id":3,"userName":"employee","email":"employee@securecorp.local","fullName":"Juliana Lima","department":"Financeiro","jobTitle":"Assistente Financeira","role":"EMPLOYEE","isActive":true,"createdAt":"2026-10-22T21:01:40.842337Z","lastLoginAt":"2026-10-22T21:02:41.467718Z"}
+

@@ -1,0 +1,25 @@
+=== PT-T12-20261022T210231Z-110  POST /api/documents/upload
+curl_args : -F title=PT tipo mz.exe -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/mz.exe;type=text/plain 
+status    : 400   tempo: 0.017326s   location: -
+body[0:300]: {"title":"Requisi....o inv..lida.","status":400,"errors":{"request":["Tipo de arquivo n..o permitido. Permitidos: .pdf, .txt, .md, .csv, .png, .jpg, .jpeg, .docx, .xlsx."]}}
+
+=== PT-T12-20261022T210231Z-111  POST /api/documents/upload
+curl_args : -F title=PT tipo page.html -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/page.html;type=text/plain 
+status    : 400   tempo: 0.013737s   location: -
+body[0:300]: {"title":"Requisi....o inv..lida.","status":400,"errors":{"request":["Tipo de arquivo n..o permitido. Permitidos: .pdf, .txt, .md, .csv, .png, .jpg, .jpeg, .docx, .xlsx."]}}
+
+=== PT-T12-20261022T210231Z-112  POST /api/documents/upload
+curl_args : -F title=PT tipo img.svg -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/img.svg;type=text/plain 
+status    : 400   tempo: 0.012080s   location: -
+body[0:300]: {"title":"Requisi....o inv..lida.","status":400,"errors":{"request":["Tipo de arquivo n..o permitido. Permitidos: .pdf, .txt, .md, .csv, .png, .jpg, .jpeg, .docx, .xlsx."]}}
+
+=== PT-T12-20261022T210231Z-113  POST /api/documents/upload
+curl_args : -F title=PT tipo macro.docm -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/macro.docm;type=text/plain 
+status    : 400   tempo: 0.012506s   location: -
+body[0:300]: {"title":"Requisi....o inv..lida.","status":400,"errors":{"request":["Tipo de arquivo n..o permitido. Permitidos: .pdf, .txt, .md, .csv, .png, .jpg, .jpeg, .docx, .xlsx."]}}
+
+=== PT-T12-20261022T210231Z-114  POST /api/documents/upload
+curl_args : -F title=PT mz como pdf -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/mz.exe;type=text/plain;filename=falso.pdf 
+status    : 400   tempo: 0.013606s   location: -
+body[0:300]: {"title":"Requisi....o inv..lida.","status":400,"errors":{"request":["O conte..do do arquivo n..o corresponde .. extens..o informada."]}}
+

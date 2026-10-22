@@ -1,0 +1,12 @@
+=== PT-T05-20261022T210231Z-064  PUT /api/users/3
+curl_args : -H Content-Type: application/json -d {"isActive":false,"id":1,"securityStamp":"x"} 
+status    : 403   tempo: 0.015324s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.4","title":"Acesso negado.","status":403,"detail":"Somente administradores podem alterar papel ou status.","traceId":"00-19fbc42f8fcf46c874525571ec6ccbbf-fb61a3c1a67b2591-00"}
+
+=== PT-T05-20261022T210231Z-065  PUT /api/users/3
+curl_args : -H Content-Type: application/json -d {"isAdmin":true,"id":1,"emailConfirmed":true} 
+status    : 200   tempo: 0.011296s   location: -
+body[0:300]: {"id":3,"userName":"employee","email":"employee@securecorp.local","fullName":"Juliana Lima","department":"Financeiro","jobTitle":"Assistente Financeira","role":"EMPLOYEE","isActive":true,"createdAt":"2026-10-22T21:01:40.842337Z","lastLoginAt":"2026-10-22T21:02:41.467718Z"}
+
+NOTA: Só propriedades desconhecidas: 200 sem nenhum evento de auditoria. O ataque (tentativa de mass assignment) é invisível porque o corpo não é registrado.
+

@@ -1,0 +1,80 @@
+=== PT-T01-20261022T210231Z-010  GET /api/documents/1
+curl_args :  
+status    : 200   tempo: 0.021416s   location: -
+body[0:300]: {"id":1,"title":"Pol..tica de Uso Aceit..vel","description":"Regras gerais para uso de recursos de TI da SecureCorp.","classification":"Public","content":"Todos os colaboradores devem utilizar os recursos de TI de forma ..tica e respons..vel. .. proibido compartilhar credenciais. Incidentes devem se
+
+=== PT-T01-20261022T210231Z-011  GET /api/documents/2
+curl_args :  
+status    : 200   tempo: 0.026433s   location: -
+body[0:300]: {"id":2,"title":"Manual do Colaborador","description":"Benef..cios, hor..rios e canais de atendimento do RH.","classification":"Public","content":"Bem-vindo .. SecureCorp! Este manual re..ne as principais informa....es sobre benef..cios, jornada de trabalho e canais de comunica....o com o RH.","hasF
+
+=== PT-T01-20261022T210231Z-012  GET /api/documents/3
+curl_args :  
+status    : 200   tempo: 0.014762s   location: -
+body[0:300]: {"id":3,"title":"Calend..rio de Feriados","description":"Feriados nacionais e pontos facultativos do ano.","classification":"Public","content":"01/01 Confraterniza....o Universal; 21/04 Tiradentes; 01/05 Dia do Trabalho; 07/09 Independ..ncia; 12/10 N. Sra. Aparecida; 02/11 Finados; 15/11 Proclama...
+
+=== PT-T01-20261022T210231Z-013  GET /api/documents/4
+curl_args :  
+status    : 200   tempo: 0.015390s   location: -
+body[0:300]: {"id":4,"title":"Procedimento de Reembolso de Despesas","description":"Fluxo interno para solicita....o de reembolso.","classification":"Internal","content":"1. Registre a despesa no sistema financeiro. 2. Anexe o comprovante. 3. Aguarde aprova....o do gestor. 4. O pagamento ocorre no ciclo quinzena
+
+=== PT-T01-20261022T210231Z-014  GET /api/documents/5
+curl_args :  
+status    : 200   tempo: 0.015530s   location: -
+body[0:300]: {"id":5,"title":"Organograma Interno","description":"Estrutura das diretorias e ger..ncias.","classification":"Internal","content":"Diretoria Executiva > Tecnologia, Financeiro, Comercial, Recursos Humanos, Seguran..a da Informa....o.","hasFile":false,"originalFileName":null,"contentType":null,"size
+
+=== PT-T01-20261022T210231Z-015  GET /api/documents/6
+curl_args :  
+status    : 200   tempo: 0.015115s   location: -
+body[0:300]: {"id":6,"title":"Metas Comerciais do Trimestre","description":"Objetivos de vendas por regi..o.","classification":"Internal","content":"Sudeste: 40% da meta global. Sul: 25%. Nordeste: 20%. Demais regi..es: 15%.","hasFile":false,"originalFileName":null,"contentType":null,"sizeBytes":null,"ownerId":5
+
+=== PT-T01-20261022T210231Z-016  GET /api/documents/7
+curl_args :  
+status    : 403   tempo: 0.029009s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.4","title":"Acesso negado.","status":403,"detail":"Voc.. n..o tem permiss..o para este documento.","traceId":"00-9dbf52e82a465e776ab3b807504a2c54-2e0db0ae0cb35dae-00"}
+
+=== PT-T01-20261022T210231Z-017  GET /api/documents/8
+curl_args :  
+status    : 403   tempo: 0.017121s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.4","title":"Acesso negado.","status":403,"detail":"Voc.. n..o tem permiss..o para este documento.","traceId":"00-76cdb013b70831e88a3ae1bfb637ab06-498f8af23d802060-00"}
+
+=== PT-T01-20261022T210231Z-018  GET /api/documents/9
+curl_args :  
+status    : 403   tempo: 0.014491s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.4","title":"Acesso negado.","status":403,"detail":"Voc.. n..o tem permiss..o para este documento.","traceId":"00-866a58dfcd3ec850c8978ec58219e286-09f125b110b5e19c-00"}
+
+=== PT-T01-20261022T210231Z-019  GET /api/documents/10
+curl_args :  
+status    : 403   tempo: 0.016252s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.4","title":"Acesso negado.","status":403,"detail":"Voc.. n..o tem permiss..o para este documento.","traceId":"00-5be470c682dbdedfa6142a869e23cfd1-6cc54c28e3c78d4a-00"}
+
+=== PT-T01-20261022T210231Z-020  GET /api/documents/11
+curl_args :  
+status    : 403   tempo: 0.015664s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.4","title":"Acesso negado.","status":403,"detail":"Voc.. n..o tem permiss..o para este documento.","traceId":"00-cfbdd34249e87505ec754078b68bd0a1-fc9ad50d63cca8de-00"}
+
+=== PT-T01-20261022T210231Z-021  GET /api/documents/12
+curl_args :  
+status    : 404   tempo: 0.008814s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Recurso n..o encontrado.","status":404,"detail":"Documento n..o encontrado.","traceId":"00-269a4891dac012ec5f6ce3efc731b19e-63c79d4d0f40f374-00"}
+
+=== PT-T01-20261022T210231Z-022  GET /api/documents/13
+curl_args :  
+status    : 404   tempo: 0.008333s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Recurso n..o encontrado.","status":404,"detail":"Documento n..o encontrado.","traceId":"00-8a364b94a2ccb1097aa33afbb043ecf8-4be82060598e5dd4-00"}
+
+=== PT-T01-20261022T210231Z-023  GET /api/documents/14
+curl_args :  
+status    : 404   tempo: 0.011142s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Recurso n..o encontrado.","status":404,"detail":"Documento n..o encontrado.","traceId":"00-c7eaf6bf42fa5fafd38c1043d3081af3-b406a4337ddf8d28-00"}
+
+=== PT-T01-20261022T210231Z-024  GET /api/documents/15
+curl_args :  
+status    : 404   tempo: 0.008780s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Recurso n..o encontrado.","status":404,"detail":"Documento n..o encontrado.","traceId":"00-ac7e830f7099b9774d0d636deee959b4-e9ec98a9b85bc237-00"}
+
+=== PT-T01-20261022T210231Z-025  GET /api/documents/9999
+curl_args :  
+status    : 404   tempo: 0.008408s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Recurso n..o encontrado.","status":404,"detail":"Documento n..o encontrado.","traceId":"00-957739f0603c72163a70f53be9217e55-e26168a5f53e5af6-00"}
+

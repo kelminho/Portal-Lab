@@ -41,7 +41,7 @@ builder.Services.AddSecurityLab(builder.Configuration);
 
 // 4. MVC (Razor Views) + API REST no mesmo projeto.
 builder.Services
-    .AddControllersWithViews()
+    .AddControllersWithViews(options => options.Filters.Add<AntiforgeryFailureAuditFilter>())
     .AddJsonOptions(options =>
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 

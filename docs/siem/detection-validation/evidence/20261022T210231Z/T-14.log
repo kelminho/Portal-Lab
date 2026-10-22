@@ -1,0 +1,21 @@
+=== PT-T14-20261022T210231Z-118  POST /api/documents/upload
+curl_args : -F title=PT nome 3442 -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/ok.txt;type=text/plain;filename=../../x.txt 
+status    : 201   tempo: 0.017947s   location: http://127.0.0.1:18080/api/documents/14
+body[0:300]: {"id":14,"title":"PT nome 3442","description":null,"classification":"Internal","content":null,"hasFile":true,"originalFileName":"x.txt","contentType":"text/plain","sizeBytes":21,"ownerId":3,"ownerName":"Juliana Lima","createdAt":"2026-10-22T21:06:19.0557982Z","updatedAt":null}
+
+NOTA: filename enviado: ../../x.txt -> originalFileName gravado: x.txt
+
+=== PT-T14-20261022T210231Z-119  POST /api/documents/upload
+curl_args : -F title=PT nome 22901 -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/ok.txt;type=text/plain;filename=..\x.txt 
+status    : 201   tempo: 0.019789s   location: http://127.0.0.1:18080/api/documents/15
+body[0:300]: {"id":15,"title":"PT nome 22901","description":null,"classification":"Internal","content":null,"hasFile":true,"originalFileName":"x.txt","contentType":"text/plain","sizeBytes":21,"ownerId":3,"ownerName":"Juliana Lima","createdAt":"2026-10-22T21:06:21.8901182Z","updatedAt":null}
+
+NOTA: filename enviado: ..\x.txt -> originalFileName gravado: x.txt
+
+=== PT-T14-20261022T210231Z-120  POST /api/documents/upload
+curl_args : -F title=PT nome 2551 -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/ok.txt;type=text/plain;filename=relatório-çã.txt 
+status    : 201   tempo: 0.018387s   location: http://127.0.0.1:18080/api/documents/16
+body[0:300]: {"id":16,"title":"PT nome 2551","description":null,"classification":"Internal","content":null,"hasFile":true,"originalFileName":"relat...rio-.......txt","contentType":"text/plain","sizeBytes":21,"ownerId":3,"ownerName":"Juliana Lima","createdAt":"2026-10-22T21:06:24.5449069Z","updatedAt":null}
+
+NOTA: filename enviado: relatório-çã.txt -> originalFileName gravado: relat�rio-��.txt
+

@@ -198,6 +198,8 @@ curl -b jar-admin.txt "http://127.0.0.1:8080/api/admin/logs?eventType=AccessDeni
 
 Cada resultado deve ter: requisição (comando), resposta (status e trecho), `request_id` e o evento correspondente no log, ou a ausência dele quando for lacuna de auditoria.
 
+Para executar T-01…T-28 de forma automatizada, com evidências e a ligação com regras do SIEM, use [`docs/siem/detection-validation/`](../siem/detection-validation/README.md). Ali também estão as divergências entre esta matriz e o comportamento observado (ex.: a 5ª falha de T-07 gera `UserLockedOut`).
+
 Limitações para análise de SIEM: formato JSON próprio (sem ECS/CEF), sem proteção de integridade dos arquivos, `audit_events` editável pela aplicação, `source_ip` sem `ForwardedHeaders` atrás de proxy.
 
 ## 10. Testes automatizados

@@ -34,6 +34,7 @@ Rotação diária, 14 arquivos retidos. O console pode emitir o mesmo JSON (`App
 | `outcome` | string | `success` ou `failure` |
 | `request_id` | string | Correlaciona todos os eventos de uma requisição (header `X-Request-ID`) |
 | `source_ip` | string | IP da conexão (ou do `X-Forwarded-For`, se habilitado — ver integration-guide) |
+| `source_port` | number | Porta de origem da conexão TCP. Atrás de túnel SSH identifica a conexão aberta pelo sshd (ver [runbook §6](detection-validation/execution-runbook.md#6-ssh-port-forwarding)) |
 | `user_id` | number | Id do usuário autenticado |
 | `username` | string | Usuário autenticado ou **tentado** em falhas de login |
 | `http_method` | string | `GET`, `POST`... |
@@ -42,13 +43,18 @@ Rotação diária, 14 arquivos retidos. O console pode emitir o mesmo JSON (`App
 | `status_code` | number | Só em `HttpRequest` |
 | `duration_ms` | number | Só em `HttpRequest` |
 | `user_agent` | string | Máx. 512 caracteres, sem caracteres de controle |
+| `session_ref` | string | 16 hex do SHA-256 do cookie de sessão; identifica a sessão sem expor o cookie. Ausente sem cookie. Une login → requisições → logout |
+| `origin` | string | Cabeçalho `Origin` (máx. 256) |
+| `referer` | string | Cabeçalho `Referer` **sem query nem fragmento** (máx. 256) |
+| `sec_fetch_site` | string | `same-origin`, `same-site`, `cross-site` ou `none` (enviado por navegadores, não por curl/Burp) |
+| `content_length` | number | Tamanho declarado do corpo da requisição, em bytes |
 | `resource` | string | Recurso afetado (ex.: documento) |
 | `trace_id` | string | Trace W3C quando disponível |
 | `source_context` | string | Classe que gerou o log |
 
 ## Objetos
 
-- `properties`: demais campos do evento (ex.: `audit_id`, `details`).
+- `properties`: demais campos do evento (ex.: `audit_id`, `details`, `request_id_rejected` — valor de `X-Request-ID` descartado por formato inválido, limpo e com ≤ 64 caracteres).
 - `exception`: `type`, `message`, `stack_trace` (só em erros).
 
 ## Dados nunca registrados

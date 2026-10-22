@@ -1,0 +1,5 @@
+=== PT-T10-20261022T210231Z-108  POST /login
+curl_args : -d UserName=employee&Password=*** 
+status    : 400   tempo: 0.024023s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Requisi....o inv..lida .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-
+

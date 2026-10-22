@@ -1,0 +1,37 @@
+=== PT-T07-20261022T210231Z-090  POST /api/auth/register
+curl_args : -H Content-Type: application/json -d {"userName":"pt.lock.20261022T210231Z","email":"pt.lock.20261022T210231Z@securecorp.local","fullName":"PT pt.lock.20261022T210231Z","password":"***","confirmPassword":"***"} 
+status    : 201   tempo: 0.076600s   location: /api/users/7
+body[0:300]: {"id":7,"userName":"pt.lock.20261022T210231Z","email":"pt.lock.20261022T210231Z@securecorp.local","fullName":"PT pt.lock.20261022T210231Z","department":null,"jobTitle":null,"role":"GUEST","isActive":true,"createdAt":"2026-10-22T21:05:24.1718437Z","lastLoginAt":null}
+
+=== PT-T07-20261022T210231Z-091  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"pt.lock.20261022T210231Z","password":"***"} 
+status    : 401   tempo: 0.062587s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-ed472a205ecf9f7ac53761e70276261b-e642afdfcfe59c3e-00"}
+
+=== PT-T07-20261022T210231Z-092  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"pt.lock.20261022T210231Z","password":"***"} 
+status    : 401   tempo: 0.063543s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-b760772e8244831cb4e4b3e4ae890bce-293f28e178c92c80-00"}
+
+=== PT-T07-20261022T210231Z-093  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"pt.lock.20261022T210231Z","password":"***"} 
+status    : 401   tempo: 0.065923s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-e6e0105a3fb589856a47bd5aced431b3-a08b57ef71d808ac-00"}
+
+=== PT-T07-20261022T210231Z-094  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"pt.lock.20261022T210231Z","password":"***"} 
+status    : 401   tempo: 0.066195s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-79f3556edc1b7ec7c37880fb30813600-63f53343f29ac794-00"}
+
+=== PT-T07-20261022T210231Z-095  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"pt.lock.20261022T210231Z","password":"***"} 
+status    : 401   tempo: 0.067526s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-c12d8a0f8ca76cebcb3bc017387059df-4bdab6f20389fd0d-00"}
+
+=== PT-T07-20261022T210231Z-096  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"pt.lock.20261022T210231Z","password":"***"} 
+status    : 401   tempo: 0.029065s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-fa2250c8f91cee660a2deccde1ece716-d1ca885e095a1d75-00"}
+
+NOTA: Tentativas 1-4: UserLoginFailed. 5ª: UserLockedOut (não UserLoginFailed). 6ª, com a senha CORRETA: 401 e novo UserLockedOut.
+

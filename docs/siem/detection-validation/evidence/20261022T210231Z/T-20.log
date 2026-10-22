@@ -1,0 +1,7 @@
+=== PT-T20-20261022T210231Z-153  POST /api/auth/register
+curl_args : -H Content-Type: application/json -d {"userName":"pt.mass.20261022T210231Z","email":"pt.mass.20261022T210231Z@securecorp.local","fullName":"PT pt.mass.20261022T210231Z","password":"***","confirmPassword":"***","role":"ADMIN","isAdmin":true} 
+status    : 201   tempo: 0.067504s   location: /api/users/9
+body[0:300]: {"id":9,"userName":"pt.mass.20261022T210231Z","email":"pt.mass.20261022T210231Z@securecorp.local","fullName":"PT pt.mass.20261022T210231Z","department":null,"jobTitle":null,"role":"GUEST","isActive":true,"createdAt":"2026-10-22T21:07:22.7565385Z","lastLoginAt":null}
+
+NOTA: Papel retornado na resposta: GUEST (esperado GUEST). O campo role/isAdmin enviado NÃO fica registrado.
+

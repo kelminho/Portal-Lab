@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SecureCorpPortal.DTOs;
+using SecureCorpPortal.Models;
 using SecureCorpPortal.Models.ViewModels;
 using SecureCorpPortal.Services;
 
@@ -10,10 +11,12 @@ namespace SecureCorpPortal.Controllers;
 public class AccountController : PortalControllerBase
 {
     private readonly IAuthService _auth;
+    private readonly IAuditService _audit;
 
-    public AccountController(IAuthService auth)
+    public AccountController(IAuthService auth, IAuditService audit)
     {
         _auth = auth;
+        _audit = audit;
     }
 
     [AllowAnonymous]
@@ -41,9 +44,22 @@ public class AccountController : PortalControllerBase
         if (result.Succeeded)
         {
             // Evita "open redirect": só aceita URLs locais.
-            if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+            if (!string.IsNullOrEmpty(model.ReturnUrl))
             {
-                return LocalRedirect(model.ReturnUrl);
+                if (Url.IsLocalUrl(model.ReturnUrl))
+                {
+                    return LocalRedirect(model.ReturnUrl);
+                }
+
+                // O usuário ainda não está autenticado nesta requisição (o cookie vai na resposta),
+                // por isso o ator é informado explicitamente.
+                await _audit.RecordAsync(new AuditEntry(AuditEventType.AccessDenied, "login.external_return_url_blocked", Success: false)
+                {
+                    UserId = result.User!.Id,
+                    Username = result.User.UserName,
+                    Resource = model.ReturnUrl,
+                    Details = "returnUrl externo ignorado após o login; redirecionado ao dashboard."
+                }, cancellationToken);
             }
 
             return RedirectToAction("Index", "Dashboard");

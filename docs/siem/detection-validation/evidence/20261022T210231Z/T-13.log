@@ -1,0 +1,17 @@
+=== PT-T13-20261022T210231Z-115  POST /api/documents/upload
+curl_args : -F title=PT pdf sem assinatura -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/fake.pdf;type=text/plain 
+status    : 400   tempo: 0.012732s   location: -
+body[0:300]: {"title":"Requisi....o inv..lida.","status":400,"errors":{"request":["O conte..do do arquivo n..o corresponde .. extens..o informada."]}}
+
+=== PT-T13-20261022T210231Z-116  POST /api/documents/upload
+curl_args : -F title=PT png poliglota -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/poly.png;type=text/plain;filename=poly.png 
+status    : 201   tempo: 0.019149s   location: http://127.0.0.1:18080/api/documents/13
+body[0:300]: {"id":13,"title":"PT png poliglota","description":null,"classification":"Internal","content":null,"hasFile":true,"originalFileName":"poly.png","contentType":"image/png","sizeBytes":46,"ownerId":3,"ownerName":"Juliana Lima","createdAt":"2026-10-22T21:06:14.2741409Z","updatedAt":null}
+
+=== PT-T13-20261022T210231Z-117  GET /api/documents/13/download
+curl_args :  
+status    : 200   tempo: 0.022555s   location: -
+body[0:300]: .PNG....<html><script>alert(1)</script></html>
+
+NOTA: Download do png poliglota — cabeçalhos: Content-Type: image/png|X-Content-Type-Options: nosniff|Content-Disposition: attachment; filename=poly.png; filename*=UTF-8''poly.png|
+

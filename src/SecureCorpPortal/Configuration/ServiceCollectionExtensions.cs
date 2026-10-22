@@ -10,6 +10,12 @@ using SecureCorpPortal.Services;
 
 namespace SecureCorpPortal.Configuration;
 
+/// <summary>Nomes dos cookies da aplicação (o valor deles nunca vai para o log).</summary>
+public static class PortalCookies
+{
+    public const string Auth = "SecureCorp.Auth";
+}
+
 /// <summary>
 /// Agrupa o registro de serviços para manter o Program.cs curto e legível.
 /// </summary>
@@ -121,7 +127,7 @@ public static class ServiceCollectionExtensions
 
         services.ConfigureApplicationCookie(options =>
         {
-            options.Cookie.Name = "SecureCorp.Auth";
+            options.Cookie.Name = PortalCookies.Auth;
             options.Cookie.HttpOnly = true;
             options.Cookie.SameSite = SameSiteMode.Strict;
             // O laboratório roda em HTTP local. Em produção use CookieSecurePolicy.Always + HTTPS.

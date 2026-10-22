@@ -8,6 +8,7 @@ Material para quem vai ingerir os logs do SecureCorp Portal e criar detecções.
 | [event-catalog.md](event-catalog.md) | Cada `event_type`, severidade padrão e quando é emitido |
 | [detection-use-cases.md](detection-use-cases.md) | Detecções sugeridas, com campos e limiares |
 | [integration-guide.md](integration-guide.md) | Como coletar os arquivos e validar o IP de origem |
+| [detection-validation/](detection-validation/README.md) | Matriz T-01…T-28 × eventos × regras CQL (Falcon NG-SIEM), executor dos testes, evidências e resultados |
 
 Pontos de atenção antes de criar alertas:
 

@@ -1,0 +1,12 @@
+=== PT-T15-20261022T210231Z-121  POST /api/documents/upload
+curl_args : -F title=PT 5MB+1 -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/big5.txt;type=text/plain 
+status    : 400   tempo: 0.117369s   location: -
+body[0:300]: {"title":"Requisi....o inv..lida.","status":400,"errors":{"request":["O arquivo excede o limite de 5 MB."]}}
+
+=== PT-T15-20261022T210231Z-122  POST /api/documents/upload
+curl_args : -F title=PT 10MB+1 -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/big10.txt;type=text/plain 
+status    : 400   tempo: 0.011362s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"":["Failed to read the request form. Request body too large. The max request body size is 10485760 bytes."]},"traceId":"00-5b9982647d9e532997b125d47a62a1d6-c1886f880
+
+NOTA: 10 MiB+1 excede [RequestSizeLimit]: status 400. O evento de auditoria só existe se a aplicação chegar ao DocumentService.
+

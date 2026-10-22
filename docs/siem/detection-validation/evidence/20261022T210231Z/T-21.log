@@ -1,0 +1,47 @@
+=== PT-T21-20261022T210231Z-154  POST /api/auth/register
+curl_args : -H Content-Type: application/json -d {"userName":"pt.timing.20261022T210231Z","email":"pt.timing.20261022T210231Z@securecorp.local","fullName":"PT pt.timing.20261022T210231Z","password":"***","confirmPassword":"***"} 
+status    : 201   tempo: 0.068954s   location: /api/users/10
+body[0:300]: {"id":10,"userName":"pt.timing.20261022T210231Z","email":"pt.timing.20261022T210231Z@securecorp.local","fullName":"PT pt.timing.20261022T210231Z","department":null,"jobTitle":null,"role":"GUEST","isActive":true,"createdAt":"2026-10-22T21:07:25.191864Z","lastLoginAt":null}
+
+=== PT-T21-20261022T210231Z-155  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"pt.timing.20261022T210231Z","password":"***"} 
+status    : 401   tempo: 0.061303s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-2bd22e25fdb4884694c3a98f28a97c4c-b7c7e1a4707d283a-00"}
+
+=== PT-T21-20261022T210231Z-156  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"ghost.20261022T210231Z.1","password":"***"} 
+status    : 401   tempo: 0.013051s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-c8d609bab0de75688ffd3563f4922a77-86977e62ae14d0f3-00"}
+
+=== PT-T21-20261022T210231Z-157  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"pt.timing.20261022T210231Z","password":"***"} 
+status    : 401   tempo: 0.065455s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-205effd7dfb3e09136625be14b23c21c-a35d0f6284d8c450-00"}
+
+=== PT-T21-20261022T210231Z-158  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"ghost.20261022T210231Z.2","password":"***"} 
+status    : 401   tempo: 0.013178s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-4dcb998068502b6bc04aa7707bbede33-2ae0b6178041f49a-00"}
+
+=== PT-T21-20261022T210231Z-159  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"pt.timing.20261022T210231Z","password":"***"} 
+status    : 401   tempo: 0.061686s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-e5936b213d8cbb2172fd735fd771e873-6962346df6b7abb2-00"}
+
+=== PT-T21-20261022T210231Z-160  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"ghost.20261022T210231Z.3","password":"***"} 
+status    : 401   tempo: 0.011790s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-dcbea5342ece553cec9663873a6a184e-bef5395aabe1b33f-00"}
+
+=== PT-T21-20261022T210231Z-161  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"pt.timing.20261022T210231Z","password":"***"} 
+status    : 401   tempo: 0.057236s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-aae5ef2dcc5e50559dff451911d29a3f-b63660acedd3d30a-00"}
+
+=== PT-T21-20261022T210231Z-162  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"ghost.20261022T210231Z.4","password":"***"} 
+status    : 401   tempo: 0.013011s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-6196544e5af8de7a4170dbff8f03634f-a2694547b7a4f108-00"}
+
+NOTA: Tempos (s) usuário existente: 0.061303 0.065455 0.061686 0.057236 | inexistente: 0.013051 0.013178 0.011790 0.013011. Amostra pequena de propósito (4 < limite de lockout); NÃO é análise estatística de F-11.
+

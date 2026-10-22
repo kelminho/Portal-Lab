@@ -120,7 +120,7 @@ public sealed class DocumentService : IDocumentService
             await _audit.RecordAsync(new AuditEntry(AuditEventType.DocumentUploaded, "document.upload", Success: false)
             {
                 Details = $"Upload rejeitado: {validation.Error} (extensão '{Path.GetExtension(request.File?.FileName ?? string.Empty)}', " +
-                          $"{request.File?.Length ?? 0} bytes)."
+                          $"{request.File?.Length ?? 0} bytes). Nome enviado pelo cliente: '{Truncate(request.File?.FileName)}'."
             }, cancellationToken);
             return ServiceResult<DocumentDto>.Fail(ServiceStatus.Invalid, validation.Error!);
         }
@@ -146,7 +146,7 @@ public sealed class DocumentService : IDocumentService
         {
             Resource = $"document:{document.Id}",
             Details = $"Arquivo '{stored.OriginalFileName}' ({stored.SizeBytes} bytes, {stored.ContentType}), " +
-                      $"classificação {document.Classification}."
+                      $"classificação {document.Classification}." + SentNameNote(request.File.FileName, stored.OriginalFileName)
         }, cancellationToken);
 
         return ServiceResult<DocumentDto>.Ok(await ReloadDtoAsync(document.Id, cancellationToken));
@@ -220,6 +220,16 @@ public sealed class DocumentService : IDocumentService
 
         return ServiceResult.Ok();
     }
+
+    /// <summary>
+    /// O nome gravado é sanitizado (sem diretórios), o que esconderia tentativas de path traversal
+    /// ("../../x"). Quando o nome enviado difere do gravado, o original vai para a auditoria.
+    /// </summary>
+    private static string SentNameNote(string? sentName, string storedName) =>
+        sentName is null || sentName == storedName ? string.Empty : $" Nome enviado pelo cliente: '{Truncate(sentName)}'.";
+
+    private static string Truncate(string? value, int max = 200) =>
+        value is null ? string.Empty : value.Length <= max ? value : value[..max];
 
     private async Task<DocumentDto> ReloadDtoAsync(int id, CancellationToken cancellationToken)
     {

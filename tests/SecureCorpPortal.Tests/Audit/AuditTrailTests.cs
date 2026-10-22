@@ -164,6 +164,42 @@ public class AuditTrailTests : IClassFixture<PortalWebApplicationFactory>
     }
 
     [Fact]
+    public async Task Upload_WithTraversalFileName_RecordsTheNameSentByTheClient()
+    {
+        using var client = await _factory.CreateClientAsAsync(DemoAccounts.Employee);
+
+        await client.PostAsync("/api/documents/upload", Upload("../../traversal.txt", "texto"u8.ToArray()));
+        await client.PostAsync("/api/documents/upload", Upload("../../bad.exe", "MZ"u8.ToArray()));
+
+        var events = await EventsAsync(AuditEventType.DocumentUploaded, "employee");
+
+        Assert.Contains(events, e => e.Success && e.Details!.Contains("Arquivo 'traversal.txt'") &&
+                                     e.Details.Contains("Nome enviado pelo cliente: '../../traversal.txt'"));
+        Assert.Contains(events, e => !e.Success && e.Details!.Contains("Nome enviado pelo cliente: '../../bad.exe'"));
+    }
+
+    [Fact]
+    public async Task Login_WithExternalReturnUrl_RecordsBlockedRedirectAttempt()
+    {
+        using var client = _factory.CreatePortalClient();
+        var token = TestHelpers.ExtractAntiforgeryToken(await client.GetStringAsync("/login"));
+
+        var response = await client.PostAsync("/login", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["UserName"] = DemoAccounts.Sales.UserName,
+            ["Password"] = DemoAccounts.Sales.Password,
+            ["ReturnUrl"] = "https://evil.test/phish",
+            ["__RequestVerificationToken"] = token
+        }));
+
+        Assert.Equal("/dashboard", response.Headers.Location!.OriginalString);
+        var blocked = (await EventsAsync(AuditEventType.AccessDenied, DemoAccounts.Sales.UserName)).Last();
+        Assert.Equal("login.external_return_url_blocked", blocked.Action);
+        Assert.Equal("https://evil.test/phish", blocked.Resource);
+        Assert.False(blocked.Success);
+    }
+
+    [Fact]
     public async Task AuditTrail_NeverContainsPasswords()
     {
         const string secret = "Sup3r$ecretValue!";

@@ -1,0 +1,12 @@
+=== PT-T04-20261022T210231Z-062  PUT /api/users/3
+curl_args : -H Content-Type: application/json -d {"role":"ADMIN"} 
+status    : 403   tempo: 0.026705s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.4","title":"Acesso negado.","status":403,"detail":"Somente administradores podem alterar papel ou status.","traceId":"00-7dbb38ccb0495163f481900f9fc0a8db-b3a81416037bbaec-00"}
+
+=== PT-T04-20261022T210231Z-063  PUT /api/users/2
+curl_args : -H Content-Type: application/json -d {"role":"ADMIN"} 
+status    : 403   tempo: 0.015027s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.4","title":"Acesso negado.","status":403,"detail":"Voc.. s.. pode alterar o pr..prio perfil.","traceId":"00-c324606d572b11a383b485d203f66bb7-0a3a52dc6a076031-00"}
+
+NOTA: Contra outro usuário o negado é user.update_denied (Medium), não privilege_change_denied (High): a checagem de propriedade vem primeiro em UserService.UpdateAsync.
+

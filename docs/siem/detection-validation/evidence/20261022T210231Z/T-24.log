@@ -1,0 +1,40 @@
+=== PT-T24-20261022T210231Z-170  GET /api/foo
+curl_args :  
+status    : 401   tempo: 0.008749s   location: -
+body[0:300]: {"title":"Autentica....o necess..ria.","status":401,"instance":"/api/foo","request_id":"PT-T24-20261022T210231Z-170"}
+
+NOTA: anon /api/foo -> 401
+
+=== PT-T24-20261022T210231Z-171  GET /api/documents
+curl_args :  
+status    : 401   tempo: 0.007712s   location: -
+body[0:300]: {"title":"Autentica....o necess..ria.","status":401,"instance":"/api/documents","request_id":"PT-T24-20261022T210231Z-171"}
+
+NOTA: anon /api/documents -> 401
+
+=== PT-T24-20261022T210231Z-172  GET /api/foo
+curl_args :  
+status    : 404   tempo: 0.011808s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"00-97989f39af8f2acab7b3e1f05c76375d-bceba3fcea63b3c6-00"}
+
+NOTA: employee /api/foo -> 404
+
+=== PT-T24-20261022T210231Z-173  GET /api/admin/users
+curl_args :  
+status    : 403   tempo: 0.016442s   location: -
+body[0:300]: {"title":"Acesso negado.","status":403,"detail":"Seu papel n..o permite acessar este recurso.","instance":"/api/admin/users","request_id":"PT-T24-20261022T210231Z-173"}
+
+=== PT-T24-20261022T210231Z-174  GET /rota-inexistente
+curl_args :  
+status    : 302   tempo: 0.007382s   location: http://127.0.0.1:18080/login?ReturnUrl=%2Frota-inexistente
+body[0:300]: 
+
+NOTA: anon /rota-inexistente -> 302
+
+=== PT-T24-20261022T210231Z-175  GET /rota-inexistente
+curl_args :  
+status    : 404   tempo: 0.009073s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+NOTA: employee /rota-inexistente -> 404
+

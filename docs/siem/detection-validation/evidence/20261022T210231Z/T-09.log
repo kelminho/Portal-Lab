@@ -1,0 +1,27 @@
+=== PT-T09-20261022T210231Z-103  POST /api/auth/register
+curl_args : -H Content-Type: application/json -d {"userName":"pt.sess.20261022T210231Z","email":"pt.sess.20261022T210231Z@securecorp.local","fullName":"PT pt.sess.20261022T210231Z","password":"***","confirmPassword":"***"} 
+status    : 201   tempo: 0.075052s   location: /api/users/8
+body[0:300]: {"id":8,"userName":"pt.sess.20261022T210231Z","email":"pt.sess.20261022T210231Z@securecorp.local","fullName":"PT pt.sess.20261022T210231Z","department":null,"jobTitle":null,"role":"GUEST","isActive":true,"createdAt":"2026-10-22T21:05:49.0540558Z","lastLoginAt":null}
+
+=== PT-T09-20261022T210231Z-104  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"pt.sess.20261022T210231Z","password":"***"} 
+status    : 200   tempo: 0.076095s   location: -
+body[0:300]: {"message":"Login realizado com sucesso.","user":{"id":8,"userName":"pt.sess.20261022T210231Z","email":"pt.sess.20261022T210231Z@securecorp.local","fullName":"PT pt.sess.20261022T210231Z","department":null,"jobTitle":null,"role":"GUEST","isActive":true,"createdAt":"2026-10-22T21:05:49.054055Z","last
+
+=== PT-T09-20261022T210231Z-105  GET /api/auth/me
+curl_args :  
+status    : 200   tempo: 0.009398s   location: -
+body[0:300]: {"id":8,"userName":"pt.sess.20261022T210231Z","email":"pt.sess.20261022T210231Z@securecorp.local","fullName":"PT pt.sess.20261022T210231Z","department":null,"jobTitle":null,"role":"GUEST","isActive":true,"createdAt":"2026-10-22T21:05:49.054055Z","lastLoginAt":"2026-10-22T21:05:51.330205Z"}
+
+=== PT-T09-20261022T210231Z-106  POST /api/auth/logout
+curl_args :  
+status    : 204   tempo: 0.017408s   location: -
+body[0:300]: 
+
+=== PT-T09-20261022T210231Z-107  GET /api/auth/me
+curl_args :  
+status    : 200   tempo: 0.008745s   location: -
+body[0:300]: {"id":8,"userName":"pt.sess.20261022T210231Z","email":"pt.sess.20261022T210231Z@securecorp.local","fullName":"PT pt.sess.20261022T210231Z","department":null,"jobTitle":null,"role":"GUEST","isActive":true,"createdAt":"2026-10-22T21:05:49.054055Z","lastLoginAt":"2026-10-22T21:05:51.330205Z"}
+
+NOTA: Reuso do cookie após logout: status 200 (200 = sessão NÃO invalidada no servidor, F-03). O que torna isto detectável é session_ref igual ao do UserLogout.
+

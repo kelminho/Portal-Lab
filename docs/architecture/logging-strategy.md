@@ -15,7 +15,8 @@ todas as linhas técnicas da mesma requisição.
 ## Como um campo chega ao log
 
 ```
-CorrelationMiddleware ── LogContext.PushProperty ──► request_id, source_ip, http_method, endpoint, user_agent
+CorrelationMiddleware ── LogContext.PushProperty ──► request_id, source_ip/port, http_method, endpoint, query_string,
+                                                     user_agent, session_ref, origin, referer, sec_fetch_site, content_length
 RequestLoggingMiddleware ── LogContext.PushProperty ──► user_id, username  (usuário autenticado)
 logger.BeginEventScope(...) ─────────────────────────► event_type, event_category, severity, action
 AuditService (escopo) ───────────────────────────────► user_id/username do ator, resource, details, audit_id
@@ -51,9 +52,9 @@ Níveis mínimos por namespace ficam em `appsettings.json` → `Serilog:MinimumL
 ## O que NUNCA é registrado
 
 - Senhas (inclusive tentativas erradas), hashes, security stamps;
-- Cookies, tokens antiforgery, cabeçalho `Authorization`;
+- Cookies, tokens antiforgery, cabeçalho `Authorization` (do cookie de sessão só se grava `session_ref`, um hash truncado e irreversível);
 - Connection strings e segredos de configuração;
-- Corpo das requisições e query strings (o campo `endpoint` contém apenas o *path*).
+- Corpo das requisições. A `query_string` é registrada (parâmetros com nome sensível saem `[REDACTED]`) e o `referer` perde query e fragmento.
 
 Proteções:
 1. **Por design**: nenhum código passa esses valores ao logger; DTOs com senha nunca são logados.

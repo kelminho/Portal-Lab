@@ -11,6 +11,7 @@ public static class LogFields
     public const string Severity = "severity";
     public const string RequestId = "request_id";
     public const string SourceIp = "source_ip";
+    public const string SourcePort = "source_port";
     public const string Username = "username";
     public const string UserId = "user_id";
     public const string HttpMethod = "http_method";
@@ -19,6 +20,11 @@ public static class LogFields
     public const string StatusCode = "status_code";
     public const string DurationMs = "duration_ms";
     public const string UserAgent = "user_agent";
+    public const string SessionRef = "session_ref";
+    public const string Origin = "origin";
+    public const string Referer = "referer";
+    public const string SecFetchSite = "sec_fetch_site";
+    public const string ContentLength = "content_length";
     public const string Action = "action";
     public const string EventType = "event_type";
     public const string EventCategory = "event_category";

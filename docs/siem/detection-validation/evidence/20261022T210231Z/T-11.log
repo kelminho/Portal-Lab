@@ -1,0 +1,7 @@
+=== PT-T11-20261022T210231Z-109  POST /api/documents/upload
+curl_args : -H Origin: http://localhost:9999 -H Sec-Fetch-Site: same-site -H Referer: http://localhost:9999/csrf.html?x=1 -F title=PT csrf 20261022T210231Z -F classification=Internal -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/ok.txt;type=text/plain 
+status    : 201   tempo: 0.026568s   location: http://127.0.0.1:18080/api/documents/12
+body[0:300]: {"id":12,"title":"PT csrf 20261022T210231Z","description":null,"classification":"Internal","content":null,"hasFile":true,"originalFileName":"ok.txt","contentType":"text/plain","sizeBytes":21,"ownerId":3,"ownerName":"Juliana Lima","createdAt":"2026-10-22T21:06:00.416243Z","updatedAt":null}
+
+NOTA: Requisição forjada com curl (Origin/Sec-Fetch-Site/Referer manuais). NÃO prova o comportamento de um navegador real: SameSite=Strict + formulário cross-origin precisa ser confirmado em browser.
+

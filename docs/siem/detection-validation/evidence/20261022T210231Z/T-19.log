@@ -1,0 +1,10 @@
+=== PT-T19-20261022T210231Z-151  POST /api/auth/register
+curl_args : -H Content-Type: application/json -d {"userName":"employee","email":"employee@securecorp.local","fullName":"PT employee","password":"***","confirmPassword":"***"} 
+status    : 400   tempo: 0.059259s   location: -
+body[0:300]: {"title":"Requisi....o inv..lida.","status":400,"errors":{"request":["Este nome de usu..rio j.. est.. em uso.","Este e-mail j.. est.. em uso."]}}
+
+=== PT-T19-20261022T210231Z-152  POST /api/auth/register
+curl_args : -H Content-Type: application/json -d {"userName":"pt.dupmail.20261022T210231Z","email":"employee@securecorp.local","fullName":"PT dup","password":"***","confirmPassword":"***"} 
+status    : 400   tempo: 0.058011s   location: -
+body[0:300]: {"title":"Requisi....o inv..lida.","status":400,"errors":{"request":["Este e-mail j.. est.. em uso."]}}
+

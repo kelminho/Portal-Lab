@@ -1,5 +1,7 @@
+using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
+using Microsoft.AspNetCore.Mvc.Testing;
 using SecureCorpPortal.Data;
 using SecureCorpPortal.Middleware;
 using SecureCorpPortal.Tests.Infrastructure;
@@ -106,6 +108,118 @@ public class LogFileIntegrationTests : IClassFixture<PortalWebApplicationFactory
         var returned = response.Headers.GetValues(CorrelationMiddleware.RequestIdHeader).Single();
         Assert.NotEqual("bad id with spaces", returned);
         Assert.Matches("^[a-f0-9]{32}$", returned);
+    }
+
+    [Fact]
+    public async Task RejectedRequestIdHeader_IsRecordedSanitized()
+    {
+        const string forged = "bad id; with spaces";
+        using var client = _factory.CreatePortalClient();
+        using var request = new HttpRequestMessage(HttpMethod.Get, "/login");
+        request.Headers.TryAddWithoutValidation(CorrelationMiddleware.RequestIdHeader, forged);
+
+        var response = await client.SendAsync(request);
+        var generated = response.Headers.GetValues(CorrelationMiddleware.RequestIdHeader).Single();
+
+        var log = await ReadLogAsync("securecorp-*.json");
+        var http = Assert.Single(log.Entries, e => Str(e, "request_id") == generated && Str(e, "event_type") == "HttpRequest");
+        Assert.Equal(forged, http.GetProperty("properties").GetProperty("request_id_rejected").GetString());
+    }
+
+    [Fact]
+    public async Task SessionRef_CorrelatesRequestsOfTheSameSession_WithoutLoggingTheCookie()
+    {
+        using var client = _factory.CreateClient(new WebApplicationFactoryClientOptions
+        {
+            AllowAutoRedirect = false,
+            HandleCookies = false
+        });
+
+        var login = await client.PostAsJsonAsync("/api/auth/login",
+            new { userName = DemoAccounts.Employee.UserName, password = DemoAccounts.Employee.Password });
+        var setCookie = login.Headers.GetValues("Set-Cookie").Single(c => c.StartsWith("SecureCorp.Auth=", StringComparison.Ordinal));
+        var cookieValue = setCookie.Split(';')[0]["SecureCorp.Auth=".Length..];
+
+        string[] requestIds = ["lab-test-session-0001", "lab-test-session-0002"];
+        foreach (var requestId in requestIds)
+        {
+            using var request = new HttpRequestMessage(HttpMethod.Get, "/api/auth/me");
+            request.Headers.Add("Cookie", $"SecureCorp.Auth={cookieValue}");
+            request.Headers.Add(CorrelationMiddleware.RequestIdHeader, requestId);
+            Assert.Equal(HttpStatusCode.OK, (await client.SendAsync(request)).StatusCode);
+        }
+
+        var log = await ReadLogAsync("securecorp-*.json");
+        var refs = requestIds
+            .Select(id => Assert.Single(log.Entries, e => Str(e, "request_id") == id && Str(e, "event_type") == "HttpRequest"))
+            .Select(e => Str(e, "session_ref"))
+            .ToList();
+
+        Assert.Matches("^[a-f0-9]{16}$", refs[0]!);
+        Assert.Equal(refs[0], refs[1]);
+        Assert.DoesNotContain(cookieValue, log.Raw);
+    }
+
+    [Fact]
+    public async Task Request_WithoutSessionCookie_HasNoSessionRef()
+    {
+        const string requestId = "lab-test-nosession-0001";
+        using var client = _factory.CreatePortalClient();
+        using var request = new HttpRequestMessage(HttpMethod.Get, "/login");
+        request.Headers.Add(CorrelationMiddleware.RequestIdHeader, requestId);
+
+        await client.SendAsync(request);
+
+        var log = await ReadLogAsync("securecorp-*.json");
+        var http = Assert.Single(log.Entries, e => Str(e, "request_id") == requestId && Str(e, "event_type") == "HttpRequest");
+        Assert.Null(Str(http, "session_ref"));
+    }
+
+    [Fact]
+    public async Task OriginHeaders_AreLogged_AndRefererLosesItsQueryString()
+    {
+        const string requestId = "lab-test-origin-0001";
+        using var client = _factory.CreatePortalClient();
+        using var request = new HttpRequestMessage(HttpMethod.Get, "/login");
+        request.Headers.Add(CorrelationMiddleware.RequestIdHeader, requestId);
+        request.Headers.Add("Origin", "http://localhost:9999");
+        request.Headers.Add("Sec-Fetch-Site", "cross-site");
+        request.Headers.Add("Referer", "http://localhost:9999/page?token=do-not-log");
+
+        await client.SendAsync(request);
+
+        var log = await ReadLogAsync("securecorp-*.json");
+        Assert.DoesNotContain("do-not-log", log.Raw);
+        var http = Assert.Single(log.Entries, e => Str(e, "request_id") == requestId && Str(e, "event_type") == "HttpRequest");
+        Assert.Equal("http://localhost:9999", Str(http, "origin"));
+        Assert.Equal("cross-site", Str(http, "sec_fetch_site"));
+        Assert.Equal("http://localhost:9999/page", Str(http, "referer"));
+    }
+
+    [Fact]
+    public async Task AntiforgeryFailure_IsWrittenAsAccessDeniedAuditEvent()
+    {
+        const string requestId = "lab-test-csrf-0001";
+        using var client = _factory.CreatePortalClient();
+        using var request = new HttpRequestMessage(HttpMethod.Post, "/login")
+        {
+            Content = new FormUrlEncodedContent(new Dictionary<string, string>
+            {
+                ["UserName"] = DemoAccounts.Employee.UserName,
+                ["Password"] = "Wrong@123!"
+            })
+        };
+        request.Headers.Add(CorrelationMiddleware.RequestIdHeader, requestId);
+
+        var response = await client.SendAsync(request);
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        var log = await ReadLogAsync("security-*.json");
+        var audit = Assert.Single(log.Entries, e => Str(e, "request_id") == requestId);
+        Assert.Equal("AccessDenied", Str(audit, "event_type"));
+        Assert.Equal("csrf.validation_failed", Str(audit, "action"));
+        Assert.Equal("failure", Str(audit, "outcome"));
+        Assert.Equal("/login", Str(audit, "resource"));
     }
 
     [Fact]

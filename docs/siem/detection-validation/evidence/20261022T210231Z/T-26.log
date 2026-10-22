@@ -1,0 +1,10 @@
+=== PT-T26-20261022T210231Z-178  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"senha123","password":"***"} 
+status    : 401   tempo: 0.012362s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-abbb7cc35c139e870f5497f07632282d-d8c0f4cc7527d0b5-00"}
+
+=== PT-T26-20261022T210231Z-179  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"P@ssw0rd!2026","password":"***"} 
+status    : 401   tempo: 0.011210s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-04ffb1776637977f28d2f9708521f416-3a2f513e27408053-00"}
+

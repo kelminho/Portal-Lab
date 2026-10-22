@@ -1,0 +1,7 @@
+=== PT-T28-20261022T210231Z-182  POST /admin/users/4/unlock
+curl_args :  
+status    : 302   tempo: 0.010956s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fadmin%2Fusers%2F4%2Funlock
+body[0:300]: 
+
+NOTA: Negado pela policy AdminOnly do controller (antes do UserService): 302 -> http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fadmin%2Fusers%2F4%2Funlock. O evento específico user.unlock_denied não existe, mas a negação é auditada.
+

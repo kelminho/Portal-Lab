@@ -1,0 +1,55 @@
+=== PT-S99-20261022T210231Z-183  DELETE /api/documents/11
+curl_args :  
+status    : 204   tempo: 0.024974s   location: -
+body[0:300]: 
+
+=== PT-S99-20261022T210231Z-184  DELETE /api/documents/12
+curl_args :  
+status    : 204   tempo: 0.015724s   location: -
+body[0:300]: 
+
+=== PT-S99-20261022T210231Z-185  DELETE /api/documents/13
+curl_args :  
+status    : 204   tempo: 0.016497s   location: -
+body[0:300]: 
+
+=== PT-S99-20261022T210231Z-186  DELETE /api/documents/14
+curl_args :  
+status    : 204   tempo: 0.014906s   location: -
+body[0:300]: 
+
+=== PT-S99-20261022T210231Z-187  DELETE /api/documents/15
+curl_args :  
+status    : 204   tempo: 0.017065s   location: -
+body[0:300]: 
+
+=== PT-S99-20261022T210231Z-188  DELETE /api/documents/16
+curl_args :  
+status    : 204   tempo: 0.015281s   location: -
+body[0:300]: 
+
+=== PT-S99-20261022T210231Z-189  DELETE /api/documents/17
+curl_args :  
+status    : 204   tempo: 0.015213s   location: -
+body[0:300]: 
+
+=== PT-S99-20261022T210231Z-190  DELETE /api/users/7
+curl_args :  
+status    : 204   tempo: 0.022544s   location: -
+body[0:300]: 
+
+=== PT-S99-20261022T210231Z-191  DELETE /api/users/8
+curl_args :  
+status    : 204   tempo: 0.013870s   location: -
+body[0:300]: 
+
+=== PT-S99-20261022T210231Z-192  DELETE /api/users/9
+curl_args :  
+status    : 204   tempo: 0.016032s   location: -
+body[0:300]: 
+
+=== PT-S99-20261022T210231Z-193  DELETE /api/users/10
+curl_args :  
+status    : 204   tempo: 0.014543s   location: -
+body[0:300]: 
+

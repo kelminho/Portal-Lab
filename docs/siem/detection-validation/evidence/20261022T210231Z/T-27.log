@@ -1,0 +1,10 @@
+=== PT-T27-20261022T210231Z-180  GET /api/admin/logs
+curl_args : -G --data-urlencode eventType=AccessDenied --data-urlencode pageSize=5 
+status    : 200   tempo: 0.041511s   location: -
+body[0:300]: {"items":[{"id":106,"timestamp":"2026-10-22T21:08:02.60561Z","eventType":"AccessDenied","action":"authorization.policy_denied","success":false,"severity":"Medium","userId":4,"username":"guest","sourceIp":"172.21.0.1","userAgent":"PentestLab/20261022T210231Z","httpMethod":"GET","endpoint":"/api/admin
+
+=== PT-T27-20261022T210231Z-181  GET /admin/logs
+curl_args :  
+status    : 200   tempo: 0.035150s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Eventos de auditoria .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo
+

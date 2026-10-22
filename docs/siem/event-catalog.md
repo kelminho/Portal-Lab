@@ -22,7 +22,7 @@ Em falha (`outcome = failure`) a severidade é no mínimo `medium`.
 | `DocumentUploaded` | low | Upload (inclui rejeitados, com `outcome = failure`) |
 | `DocumentDeleted` | medium | Exclusão por ADMIN |
 | `AdminAction` | medium | Ativar/desativar/desbloquear conta, consulta à auditoria |
-| `AccessDenied` | medium | Negação por papel/policy ou por regra de recurso |
+| `AccessDenied` | medium | Negação por papel/policy ou por regra de recurso. `action`: `authorization.policy_denied`, `document.read_denied`, `document.download_denied`, `document.create_denied`, `document.delete_denied`, `user.read_denied`, `user.update_denied`, `user.privilege_change_denied` (high), `user.delete_denied` (high), `csrf.validation_failed` (POST de formulário sem token antiforgery válido), `login.external_return_url_blocked` (`returnUrl` externo ignorado após login) |
 
 O valor exato de `action` de cada evento está no código dos services (`Services/*.cs`).
 

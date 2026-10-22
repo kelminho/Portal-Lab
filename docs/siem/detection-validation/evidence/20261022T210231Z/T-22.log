@@ -1,0 +1,37 @@
+=== PT-T22-20261022T210231Z-163  GET /error/0
+curl_args :  
+status    : 000   tempo: 0.047711s   location: -
+body[0:300]: 
+
+NOTA: /error/0 -> cliente recebeu 000 (000 = conexão encerrada sem resposta) | stack trace no corpo: nao
+
+=== PT-T22-20261022T210231Z-164  GET /error/5000
+curl_args :  
+status    : 500   tempo: 0.006928s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Erro inesperado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.
+
+NOTA: /error/5000 -> cliente recebeu 500 (000 = conexão encerrada sem resposta) | stack trace no corpo: nao
+
+=== PT-T22-20261022T210231Z-165  GET /error/abc
+curl_args :  
+status    : 302   tempo: 0.011743s   location: http://127.0.0.1:18080/login?ReturnUrl=%2Ferror%2Fabc
+body[0:300]: 
+
+NOTA: /error/abc -> cliente recebeu 302 (000 = conexão encerrada sem resposta) | stack trace no corpo: nao
+
+=== PT-T22-20261022T210231Z-166  GET /error/404
+curl_args :  
+status    : 404   tempo: 0.005966s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>P..gina n..o encontrada .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+NOTA: /error/404 -> cliente recebeu 404 (000 = conexão encerrada sem resposta) | stack trace no corpo: nao
+
+=== PT-T22-20261022T210231Z-167  GET /error/403
+curl_args :  
+status    : 403   tempo: 0.006111s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Acesso negado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</
+
+NOTA: /error/403 -> cliente recebeu 403 (000 = conexão encerrada sem resposta) | stack trace no corpo: nao
+
+NOTA: O log registra status_code 0 e 5000 (valores digitados na URL), não o que o cliente recebeu; nenhum ApplicationError é emitido (F-12).
+

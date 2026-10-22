@@ -1,0 +1,12 @@
+=== PT-T17-20261022T210231Z-144  POST /api/documents
+curl_args : -H Content-Type: application/json -d {"title":"PT xss armazenado","classification":"Internal","content":"<img src=x onerror=alert(1)>"} 
+status    : 201   tempo: 0.022597s   location: http://127.0.0.1:18080/api/documents/17
+body[0:300]: {"id":17,"title":"PT xss armazenado","description":null,"classification":"Internal","content":"<img src=x onerror=alert(1)>","hasFile":false,"originalFileName":null,"contentType":null,"sizeBytes":null,"ownerId":3,"ownerName":"Juliana Lima","createdAt":"2026-10-22T21:07:06.5347144Z","updatedAt":null}
+
+=== PT-T17-20261022T210231Z-145  GET /documents/17
+curl_args :  
+status    : 200   tempo: 0.021491s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>PT xss armazenado .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" /
+
+NOTA: Conteúdo renderizado CODIFICADO (&lt;img): sem XSS.
+

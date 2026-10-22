@@ -1,0 +1,45 @@
+=== PT-S00-20261022T210231Z-001  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"admin","password":"***"} 
+status    : 200   tempo: 0.326192s   location: -
+body[0:300]: {"message":"Login realizado com sucesso.","user":{"id":1,"userName":"admin","email":"admin@securecorp.local","fullName":"Carla Mendes","department":"Tecnologia da Informa....o","jobTitle":"Administradora de Sistemas","role":"ADMIN","isActive":true,"createdAt":"2026-10-22T21:01:40.566032Z","lastLogin
+
+=== PT-S00-20261022T210231Z-002  GET /api/auth/me
+curl_args :  
+status    : 200   tempo: 0.033793s   location: -
+body[0:300]: {"id":1,"userName":"admin","email":"admin@securecorp.local","fullName":"Carla Mendes","department":"Tecnologia da Informa....o","jobTitle":"Administradora de Sistemas","role":"ADMIN","isActive":true,"createdAt":"2026-10-22T21:01:40.566032Z","lastLoginAt":"2026-10-22T21:02:32.792213Z"}
+
+=== PT-S00-20261022T210231Z-003  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"analyst","password":"***"} 
+status    : 200   tempo: 0.078878s   location: -
+body[0:300]: {"message":"Login realizado com sucesso.","user":{"id":2,"userName":"analyst","email":"analyst@securecorp.local","fullName":"Rafael Souza","department":"Seguran..a da Informa....o","jobTitle":"Analista de Seguran..a","role":"ANALYST","isActive":true,"createdAt":"2026-10-22T21:01:40.775677Z","lastLog
+
+=== PT-S00-20261022T210231Z-004  GET /api/auth/me
+curl_args :  
+status    : 200   tempo: 0.012361s   location: -
+body[0:300]: {"id":2,"userName":"analyst","email":"analyst@securecorp.local","fullName":"Rafael Souza","department":"Seguran..a da Informa....o","jobTitle":"Analista de Seguran..a","role":"ANALYST","isActive":true,"createdAt":"2026-10-22T21:01:40.775677Z","lastLoginAt":"2026-10-22T21:02:37.096877Z"}
+
+=== PT-S00-20261022T210231Z-005  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"employee","password":"***"} 
+status    : 200   tempo: 0.079670s   location: -
+body[0:300]: {"message":"Login realizado com sucesso.","user":{"id":3,"userName":"employee","email":"employee@securecorp.local","fullName":"Juliana Lima","department":"Financeiro","jobTitle":"Assistente Financeira","role":"EMPLOYEE","isActive":true,"createdAt":"2026-10-22T21:01:40.842337Z","lastLoginAt":"2026-10
+
+=== PT-S00-20261022T210231Z-006  GET /api/auth/me
+curl_args :  
+status    : 200   tempo: 0.012860s   location: -
+body[0:300]: {"id":3,"userName":"employee","email":"employee@securecorp.local","fullName":"Juliana Lima","department":"Financeiro","jobTitle":"Assistente Financeira","role":"EMPLOYEE","isActive":true,"createdAt":"2026-10-22T21:01:40.842337Z","lastLoginAt":"2026-10-22T21:02:41.467718Z"}
+
+=== PT-S00-20261022T210231Z-007  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"guest","password":"***"} 
+status    : 200   tempo: 0.090804s   location: -
+body[0:300]: {"message":"Login realizado com sucesso.","user":{"id":4,"userName":"guest","email":"guest@securecorp.local","fullName":"Pedro Alves","department":"Parceiros Externos","jobTitle":"Consultor Convidado","role":"GUEST","isActive":true,"createdAt":"2026-10-22T21:01:40.901588Z","lastLoginAt":"2026-10-22T
+
+=== PT-S00-20261022T210231Z-008  GET /api/auth/me
+curl_args :  
+status    : 200   tempo: 0.019114s   location: -
+body[0:300]: {"id":4,"userName":"guest","email":"guest@securecorp.local","fullName":"Pedro Alves","department":"Parceiros Externos","jobTitle":"Consultor Convidado","role":"GUEST","isActive":true,"createdAt":"2026-10-22T21:01:40.901588Z","lastLoginAt":"2026-10-22T21:02:45.865301Z"}
+
+=== PT-S00-20261022T210231Z-009  POST /api/documents/upload
+curl_args : -F title=PT restrito 20261022T210231Z -F classification=Restricted -F file=@C:/Users/lkelme/AppData/Local/Temp/tmp.Shfl82MbMI/ok.txt;type=text/plain 
+status    : 201   tempo: 0.099365s   location: http://127.0.0.1:18080/api/documents/11
+body[0:300]: {"id":11,"title":"PT restrito 20261022T210231Z","description":null,"classification":"Restricted","content":null,"hasFile":true,"originalFileName":"ok.txt","contentType":"text/plain","sizeBytes":21,"ownerId":1,"ownerName":"Carla Mendes","createdAt":"2026-10-22T21:02:51.8867101Z","updatedAt":null}
+

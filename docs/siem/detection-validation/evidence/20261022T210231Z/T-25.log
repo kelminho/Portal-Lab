@@ -1,0 +1,14 @@
+=== PT-T25-valido-20261022T210231Z  GET /login
+curl_args :  
+status    : 200   tempo: 0.006930s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Entrar .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<
+
+NOTA: ID válido reutilizado? enviado PT-T25-valido-20261022T210231Z | devolvido PT-T25-valido-20261022T210231Z
+
+=== e8e39dcbb55d4ac1808609f89ddf0ae6  GET /login
+curl_args :  
+status    : 200   tempo: 0.006765s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Entrar .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<
+
+NOTA: ID inválido substituído por e8e39dcbb55d4ac1808609f89ddf0ae6. CR/LF não testado com curl (a ferramenta impede); coberto pelo regex ^[A-Za-z0-9._-]{8,64}$.
+

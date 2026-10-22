@@ -33,6 +33,7 @@ public sealed class SiemJsonFormatter : ITextFormatter
         LogFields.Outcome,
         LogFields.RequestId,
         LogFields.SourceIp,
+        LogFields.SourcePort,
         LogFields.UserId,
         LogFields.Username,
         LogFields.HttpMethod,
@@ -41,6 +42,11 @@ public sealed class SiemJsonFormatter : ITextFormatter
         LogFields.StatusCode,
         LogFields.DurationMs,
         LogFields.UserAgent,
+        LogFields.SessionRef,
+        LogFields.Origin,
+        LogFields.Referer,
+        LogFields.SecFetchSite,
+        LogFields.ContentLength,
         LogFields.Resource
     ];
 

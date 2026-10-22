@@ -1,0 +1,120 @@
+=== PT-T06-20261022T210231Z-066  GET /admin
+curl_args :  
+status    : 302   tempo: 0.019559s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fadmin
+body[0:300]: 
+
+=== PT-T06-20261022T210231Z-067  GET /admin/users
+curl_args :  
+status    : 302   tempo: 0.012494s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fadmin%2Fusers
+body[0:300]: 
+
+=== PT-T06-20261022T210231Z-068  GET /admin/logs
+curl_args :  
+status    : 302   tempo: 0.014244s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fadmin%2Flogs
+body[0:300]: 
+
+=== PT-T06-20261022T210231Z-069  GET /api/admin/users
+curl_args :  
+status    : 403   tempo: 0.020867s   location: -
+body[0:300]: {"title":"Acesso negado.","status":403,"detail":"Seu papel n..o permite acessar este recurso.","instance":"/api/admin/users","request_id":"PT-T06-20261022T210231Z-069"}
+
+=== PT-T06-20261022T210231Z-070  GET /api/admin/logs
+curl_args :  
+status    : 403   tempo: 0.012914s   location: -
+body[0:300]: {"title":"Acesso negado.","status":403,"detail":"Seu papel n..o permite acessar este recurso.","instance":"/api/admin/logs","request_id":"PT-T06-20261022T210231Z-070"}
+
+=== PT-T06-20261022T210231Z-071  GET /users
+curl_args :  
+status    : 302   tempo: 0.014457s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fusers
+body[0:300]: 
+
+=== PT-T06-20261022T210231Z-072  GET /api/users
+curl_args :  
+status    : 403   tempo: 0.011179s   location: -
+body[0:300]: {"title":"Acesso negado.","status":403,"detail":"Seu papel n..o permite acessar este recurso.","instance":"/api/users","request_id":"PT-T06-20261022T210231Z-072"}
+
+=== PT-T06-20261022T210231Z-073  GET /documents/upload
+curl_args :  
+status    : 302   tempo: 0.010543s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fdocuments%2Fupload
+body[0:300]: 
+
+=== PT-T06-20261022T210231Z-074  GET /admin
+curl_args :  
+status    : 302   tempo: 0.017288s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fadmin
+body[0:300]: 
+
+=== PT-T06-20261022T210231Z-075  GET /admin/users
+curl_args :  
+status    : 302   tempo: 0.011867s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fadmin%2Fusers
+body[0:300]: 
+
+=== PT-T06-20261022T210231Z-076  GET /admin/logs
+curl_args :  
+status    : 302   tempo: 0.012074s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fadmin%2Flogs
+body[0:300]: 
+
+=== PT-T06-20261022T210231Z-077  GET /api/admin/users
+curl_args :  
+status    : 403   tempo: 0.012266s   location: -
+body[0:300]: {"title":"Acesso negado.","status":403,"detail":"Seu papel n..o permite acessar este recurso.","instance":"/api/admin/users","request_id":"PT-T06-20261022T210231Z-077"}
+
+=== PT-T06-20261022T210231Z-078  GET /api/admin/logs
+curl_args :  
+status    : 403   tempo: 0.011638s   location: -
+body[0:300]: {"title":"Acesso negado.","status":403,"detail":"Seu papel n..o permite acessar este recurso.","instance":"/api/admin/logs","request_id":"PT-T06-20261022T210231Z-078"}
+
+=== PT-T06-20261022T210231Z-079  GET /users
+curl_args :  
+status    : 302   tempo: 0.015716s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fusers
+body[0:300]: 
+
+=== PT-T06-20261022T210231Z-080  GET /api/users
+curl_args :  
+status    : 403   tempo: 0.014011s   location: -
+body[0:300]: {"title":"Acesso negado.","status":403,"detail":"Seu papel n..o permite acessar este recurso.","instance":"/api/users","request_id":"PT-T06-20261022T210231Z-080"}
+
+=== PT-T06-20261022T210231Z-081  GET /documents/upload
+curl_args :  
+status    : 200   tempo: 0.050498s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Novo documento .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.<
+
+=== PT-T06-20261022T210231Z-082  GET /admin
+curl_args :  
+status    : 302   tempo: 0.018254s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fadmin
+body[0:300]: 
+
+=== PT-T06-20261022T210231Z-083  GET /admin/users
+curl_args :  
+status    : 302   tempo: 0.012927s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fadmin%2Fusers
+body[0:300]: 
+
+=== PT-T06-20261022T210231Z-084  GET /admin/logs
+curl_args :  
+status    : 302   tempo: 0.015717s   location: http://127.0.0.1:18080/access-denied?ReturnUrl=%2Fadmin%2Flogs
+body[0:300]: 
+
+=== PT-T06-20261022T210231Z-085  GET /api/admin/users
+curl_args :  
+status    : 403   tempo: 0.013128s   location: -
+body[0:300]: {"title":"Acesso negado.","status":403,"detail":"Seu papel n..o permite acessar este recurso.","instance":"/api/admin/users","request_id":"PT-T06-20261022T210231Z-085"}
+
+=== PT-T06-20261022T210231Z-086  GET /api/admin/logs
+curl_args :  
+status    : 403   tempo: 0.013987s   location: -
+body[0:300]: {"title":"Acesso negado.","status":403,"detail":"Seu papel n..o permite acessar este recurso.","instance":"/api/admin/logs","request_id":"PT-T06-20261022T210231Z-086"}
+
+=== PT-T06-20261022T210231Z-087  GET /users
+curl_args :  
+status    : 200   tempo: 0.042319s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Diret..rio de usu..rios .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk
+
+=== PT-T06-20261022T210231Z-088  GET /api/users
+curl_args :  
+status    : 200   tempo: 0.013658s   location: -
+body[0:300]: [{"id":1,"userName":"admin","email":"admin@securecorp.local","fullName":"Carla Mendes","department":"Tecnologia da Informa....o","jobTitle":"Administradora de Sistemas","role":"ADMIN","isActive":true,"createdAt":"2026-10-22T21:01:40.566032Z","lastLoginAt":"2026-10-22T21:02:32.792213Z"},{"id":2,"user
+
+=== PT-T06-20261022T210231Z-089  GET /documents/upload
+curl_args :  
+status    : 200   tempo: 0.009981s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Novo documento .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.<
+

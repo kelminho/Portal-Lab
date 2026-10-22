@@ -1,0 +1,29 @@
+=== PT-T18-20261022T210231Z-146  GET /login
+curl_args : -G --data-urlencode returnUrl=https://evil.test/phish 
+status    : 200   tempo: 0.014903s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Entrar .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<
+
+=== PT-T18-20261022T210231Z-147  GET /login
+curl_args :  
+status    : 200   tempo: 0.007923s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Entrar .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<
+
+=== PT-T18-20261022T210231Z-148  POST /login
+curl_args : --data-urlencode UserName=employee --data-urlencode Password=*** --data-urlencode ReturnUrl=https://evil.test/phish --data-urlencode __RequestVerificationToken=CfDJ8E0-N2AYoHlOqrmUn4yi1AE-H-dzpLGTODvM_6OLUTiAN4kvQ3Nd86Hnsovfp0LU_-8Gld61WDx-JGzoy1IP0NCiZNE-V58k9IrwStbif0sp2PMTcicNJvbSaUhXGtt0CnUKg570g_sWno7xiV_CrOg 
+status    : 302   tempo: 0.077536s   location: /dashboard
+body[0:300]: 
+
+NOTA: returnUrl=https://evil.test/phish -> Location: /dashboard (esperado: /dashboard).
+
+=== PT-T18-20261022T210231Z-149  GET /login
+curl_args :  
+status    : 200   tempo: 0.007739s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Entrar .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<
+
+=== PT-T18-20261022T210231Z-150  POST /login
+curl_args : --data-urlencode UserName=employee --data-urlencode Password=*** --data-urlencode ReturnUrl=//evil.test/phish --data-urlencode __RequestVerificationToken=CfDJ8E0-N2AYoHlOqrmUn4yi1AFw1nZHa_3DQDLto4Pw8_nCBSByfHonyLTuuUvIzXZfq-7k8e4ygUnrs_H9TShuDDFLSPzqf0OBUJgGUto1LMPtDPezzFIk0iQjNy8kC0KxbqX9nvWBQU6dtouKT8hPQrY 
+status    : 302   tempo: 0.073939s   location: /dashboard
+body[0:300]: 
+
+NOTA: returnUrl=//evil.test/phish -> Location: /dashboard (esperado: /dashboard).
+

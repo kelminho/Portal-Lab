@@ -1,0 +1,32 @@
+=== PT-T08-20261022T210231Z-097  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"admin","password":"***"} 
+status    : 401   tempo: 0.064899s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-1dcb2e406d0fce4bbad1ad3befb06b04-386d39ae9c46b4b8-00"}
+
+=== PT-T08-20261022T210231Z-098  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"analyst","password":"***"} 
+status    : 401   tempo: 0.067408s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-0598ef4953bdef10b32925bb466bb7e6-f1f60304b0af09bd-00"}
+
+=== PT-T08-20261022T210231Z-099  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"employee","password":"***"} 
+status    : 401   tempo: 0.096897s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-577a6ffd2ebde4707ad9e663fe5e537b-c8f3c2b8951e6651-00"}
+
+=== PT-T08-20261022T210231Z-100  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"guest","password":"***"} 
+status    : 401   tempo: 0.066123s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-77dc2987d197f622177c3c3d57ae0cd5-1c9a9d8dd3eadd7f-00"}
+
+=== PT-T08-20261022T210231Z-101  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"marcos.oliveira","password":"***"} 
+status    : 401   tempo: 0.071965s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-3928cf28a6dce47a629ed45f93bee556-c4d0cc52fb97bb41-00"}
+
+=== PT-T08-20261022T210231Z-102  POST /api/auth/login
+curl_args : -H Content-Type: application/json -d {"userName":"patricia.santos","password":"***"} 
+status    : 401   tempo: 0.070555s   location: -
+body[0:300]: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.2","title":"Usu..rio ou senha inv..lidos, ou conta temporariamente bloqueada.","status":401,"traceId":"00-7ec6290aa9620feded71cb8bffbcf134-3bab6f176e07350d-00"}
+
+NOTA: 1 senha x 6 contas de seed, mesmo source_ip/user_agent, sem bloqueio por IP (F-02).
+

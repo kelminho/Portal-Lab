@@ -1,0 +1,14 @@
+=== PT-T23-20261022T210231Z-168  GET /login
+curl_args :  
+status    : 200   tempo: 0.007635s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Entrar .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head>.<
+
+NOTA: anon — presentes: content-security-policy x-frame-options x-content-type-options referrer-policy cross-origin-opener-policy cache-control | cache-control=no-cache, no-store | ausentes: strict-transport-security
+
+=== PT-T23-20261022T210231Z-169  GET /dashboard
+curl_args :  
+status    : 200   tempo: 0.058646s   location: -
+body[0:300]: <!DOCTYPE html>.<html lang="pt-BR">.<head>.    <meta charset="utf-8" />.    <meta name="viewport" content="width=device-width, initial-scale=1" />.    <title>Dashboard .. SecureCorp Portal</title>.    <link rel="stylesheet" href="/css/site.css?v=_vC8EysQ7-pMdrvREt_ZWj-bv5c09b67rJlfLRvk-Uo" />.</head
+
+NOTA: employee — presentes: content-security-policy x-frame-options x-content-type-options referrer-policy cross-origin-opener-policy cache-control | cache-control=no-cache, no-store | ausentes: strict-transport-security
+
